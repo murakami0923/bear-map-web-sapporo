@@ -133,7 +133,7 @@ const MapView = (): JSX.Element => {
   return (
     <div className="map-container">
       <div className="map-header">
-        <h1>熊出没マップ（札幌）</h1>
+        <h1>熊出没マップ 北海道札幌市 2017年～2024年</h1>
         <button type="button" className="secondary-button" onClick={handleResetFilter}>
           フィルタ解除
         </button>
