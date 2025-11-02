@@ -14,9 +14,9 @@ const App = (): JSX.Element => {
       </main>
       <footer className="app-footer">
         <p>
-          地図タイル:{' '}
+          地図データ {' '}
           <a href="https://www.openstreetmap.org/" target="_blank" rel="noopener noreferrer">
-            OpenStreetMap
+            &copy; OpenStreetMap
           </a>
         </p>
       </footer>
