@@ -54,7 +54,7 @@ main {
 
 .filter-button {
   position: absolute;
-  top: 1rem;
+  top: 4rem;
   left: 1rem;
   z-index: 10;
   border: none;
