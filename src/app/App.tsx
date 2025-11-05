@@ -1,5 +1,5 @@
 import MapView from '../components/MapView';
-import '../styles/index.css';
+import '../styles/index.css?ts=20251105-2250';
 
 /**
  * アプリ全体のレイアウトを構築し、地図コンポーネントとフッターを配置する。
