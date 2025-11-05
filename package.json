@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint \"src/**/*.{ts,tsx}\""
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "ls-js": "find ./ -name \"*.js\" | grep -v -E \"^\\.\\/node_modules\\/\"",
+    "clean-js": "find ./ -name \"*.js\" | grep -v -E \"^\\.\\/node_modules\\/\" | xargs -I {} rm -f {}"
   },
   "dependencies": {
     "maplibre-gl": "^3.6.1",
