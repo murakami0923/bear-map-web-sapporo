@@ -6,8 +6,5 @@ export default defineConfig({
   server: {
     open: true,
   },
-  base: "/bear-map-web-sapporo/",
-  build: {
-    outDir: "dist"
-  },
+  base: "/bear-map-web-sapporo/"
 });
