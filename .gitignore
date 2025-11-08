@@ -1,8 +1,6 @@
 *.ps1
 
 node_modules/
-*.js
 # dist/
-!dist/assets/*.js
 
 *Zone.Identifier
