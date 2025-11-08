@@ -1,17 +1,8 @@
-export type BearStatus =
-  | 'クマを目撃'
-  | 'ヒグマらしき動物を目撃'
-  | 'フンを確認'
-  | '足跡を確認'
-  | 'その他'
-  | 'ヒグマを目撃';
-
 export interface BearProps {
   year: number;
   month: number;
-  status: BearStatus;
-  title?: string;
-  note?: string;
+  id?: string;
+  icon?: BearIconName;
   [key: string]: unknown;
 }
 
@@ -32,5 +23,14 @@ export interface BearFeatureCollection {
 export interface BearFilter {
   year?: number;
   month?: number;
-  status?: BearStatus;
+  icon?: BearIconName;
 }
+
+export type BearIconName =
+  | 'bear.svg'
+  | 'like-bear.svg'
+  | 'excrement.svg'
+  | 'footprint.svg'
+  | 'camera.svg'
+  | 'voice.svg'
+  | 'other.svg';

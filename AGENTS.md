@@ -75,24 +75,12 @@
   - `year`: number（2017〜2025）
   - `month`: number（1〜12）
   - `status`: string（`クマを目撃` / `ヒグマらしき動物を目撃` / `フンを確認` / `足跡を確認` / `その他`）
-  - `title` / `note` など自由項目（任意）
 
 ### 4.2 TypeScript 型（例）
 ```ts
-// src/types/bears.d.ts
-export type BearStatus =
-  | "クマを目撃"
-  | "ヒグマらしき動物を目撃"
-  | "フンを確認"
-  | "足跡を確認"
-  | "その他";
-
 export interface BearProps {
   year: number;
   month: number;
-  status: BearStatus;
-  title?: string;
-  note?: string;
   [key: string]: unknown;
 }
 ```

@@ -3,7 +3,30 @@ import type { Map as MapLibreMap, Marker } from 'maplibre-gl';
 import { Marker as MapLibreMarker } from 'maplibre-gl';
 import type { BearFeature } from '../types/bears';
 
-const BEAR_ICON_URL = '/icon/bear.svg';
+const ICON_BASE_PATH = '/icon/';
+const DEFAULT_ICON_FILENAME = 'bear.svg';
+
+/**
+ * GeoJSON の icon プロパティに基づいて描画するアイコンの URL を生成する。
+ *
+ * @param {BearFeature} feature 対象の Feature
+ * @returns {string} public/icon 配下の SVG へのパス
+ */
+const buildIconUrl = (feature: BearFeature): string => {
+  // icon が未定義か空文字ならデフォルトアイコンを返す
+  const iconNameRaw = feature.properties.icon;
+  if (typeof iconNameRaw !== 'string') {
+    return `${ICON_BASE_PATH}${DEFAULT_ICON_FILENAME}`;
+  }
+
+  // ディレクトリトラバーサル防止のため最後のパス要素のみを採用し、空ならデフォルト
+  const sanitized = iconNameRaw.replace(/\\/g, '/').split('/').pop()?.trim();
+  if (!sanitized) {
+    return `${ICON_BASE_PATH}${DEFAULT_ICON_FILENAME}`;
+  }
+
+  return `${ICON_BASE_PATH}${sanitized}`;
+};
 
 /**
  * MapLibre のマップ上に熊アイコンのマーカーを描画する。
@@ -36,7 +59,7 @@ const BearMarker = ({
 
     // 画像要素を生成し、MapLibre のマーカーへ割り当てる
     const img = document.createElement('img');
-    img.src = BEAR_ICON_URL;
+    img.src = buildIconUrl(feature);
     img.alt = '熊の出没地点';
     img.style.width = '32px';
     img.style.height = '32px';

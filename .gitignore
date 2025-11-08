@@ -1,3 +1,7 @@
+*.ps1
+
 node_modules/
 *.js
 dist/
+
+*Zone.Identifier
