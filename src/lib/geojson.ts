@@ -124,10 +124,10 @@ export const mapProperties = (
   ].filter((value) => typeof value === 'number' || value instanceof Number) as number[];
 
   const month = monthCandidates.find((candidate) => isValidMonth(Number(candidate)));
-  const status = normalizeStatus(statusRaw);
+  const status = normalizeStatus(statusRaw) ?? 'その他';
 
-  // 年と月、状況のいずれかが取れない場合はフィルタ対象から除外する
-  if (!year || !month || !status) {
+  // 年と月のいずれかが取れない場合はフィルタ対象から除外する
+  if (!year || !month) {
     return undefined;
   }
 
