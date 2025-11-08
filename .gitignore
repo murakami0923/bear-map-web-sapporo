@@ -2,6 +2,6 @@
 
 node_modules/
 *.js
-dist/
+# dist/
 
 *Zone.Identifier
