@@ -33,6 +33,8 @@ const DetailsModal = ({ feature, onClose }: { feature: BearFeature | null; onClo
     return null;
   }
 
+  const iconUrl = '/icon/' + String(feature.properties.icon);
+
   return (
     <div className="modal-backdrop" role="dialog" aria-modal="true">
       <div className="modal-content details-modal">
@@ -48,6 +50,7 @@ const DetailsModal = ({ feature, onClose }: { feature: BearFeature | null; onClo
             ×
           </button>
         </header>
+        <img src={iconUrl} width='64px' height='64px'/>
         <div className="modal-body">
           <table>
             <tbody>
