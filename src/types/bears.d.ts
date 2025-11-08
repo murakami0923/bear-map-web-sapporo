@@ -33,5 +33,5 @@ export interface BearFeatureCollection {
 export interface BearFilter {
   year?: number;
   month?: number;
-  status?: BearStatus;
+  icon?: string;
 }

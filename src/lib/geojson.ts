@@ -179,14 +179,15 @@ export const parseFeatureCollection = (json: unknown): BearFeatureCollection => 
 export const filterFeatures = (features: BearFeature[], filter: BearFilter): BearFeature[] => {
   // 条件の AND 結合で絞り込み、未指定項目はワイルドカード扱いとする
   return features.filter((feature) => {
-    const { year, month, status } = feature.properties;
+    const { year, month } = feature.properties;
+    const iconName = typeof feature.properties.icon === 'string' ? feature.properties.icon : undefined;
     if (filter.year && year !== filter.year) {
       return false;
     }
     if (filter.month && month !== filter.month) {
       return false;
     }
-    if (filter.status && status !== filter.status) {
+    if (filter.icon && iconName !== filter.icon) {
       return false;
     }
     return true;
