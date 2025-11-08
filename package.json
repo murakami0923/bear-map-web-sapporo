@@ -1,6 +1,5 @@
 {
   "name": "bear-map-web-sapporo",
-  "homepage": "https://murakami0923.github.io/bear-map-web-sapporo/",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -10,7 +9,8 @@
     "preview": "vite preview",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "ls-js": "find ./ -name \"*.js\" | grep -v -E \"^\\.\\/node_modules\\/\"",
-    "clean-js": "find ./ -name \"*.js\" | grep -v -E \"^\\.\\/node_modules\\/\" | xargs -I {} rm -f {}"
+    "clean-js": "find ./ -name \"*.js\" | grep -v -E \"^\\.\\/node_modules\\/\" | xargs -I {} rm -f {}",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "maplibre-gl": "^3.6.1",
