@@ -10,6 +10,7 @@ export interface BearProps {
   year: number;
   month: number;
   status: BearStatus;
+  id?: string;
   title?: string;
   note?: string;
   icon?: string;
@@ -33,5 +34,5 @@ export interface BearFeatureCollection {
 export interface BearFilter {
   year?: number;
   month?: number;
-  icon?: string;
+  status?: BearStatus;
 }

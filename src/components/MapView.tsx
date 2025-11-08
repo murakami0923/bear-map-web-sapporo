@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Map as MapLibreMap, NavigationControl } from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import BearMarker from './BearMarker';
@@ -120,15 +120,31 @@ const MapView = (): JSX.Element => {
 
   const map = mapRef.current;
 
-  const markers = useMemo(
-    () =>
-      map
-        ? filteredFeatures.map((feature) => (
-            <BearMarker key={`${feature.geometry.coordinates.join(',')}-${feature.properties.year}-${feature.properties.month}`} map={map} feature={feature} onSelect={handleMarkerSelect} />
-          ))
-        : null,
-    [filteredFeatures, handleMarkerSelect, map],
-  );
+  const markerLayerKey = useMemo(() => {
+    return JSON.stringify({
+      year: filter.year ?? 'all',
+      month: filter.month ?? 'all',
+      status: filter.status ?? 'all',
+    });
+  }, [filter]);
+
+  const markers = useMemo(() => {
+    if (!map) {
+      return null;
+    }
+    return (
+      <Fragment key={markerLayerKey}>
+        {filteredFeatures.map((feature) => (
+          <BearMarker
+            key={feature.properties.id ?? `${feature.geometry.coordinates.join(',')}-${feature.properties.year}-${feature.properties.month}`}
+            map={map}
+            feature={feature}
+            onSelect={handleMarkerSelect}
+          />
+        ))}
+      </Fragment>
+    );
+  }, [filteredFeatures, handleMarkerSelect, map, markerLayerKey]);
 
   return (
     <div className="map-container">

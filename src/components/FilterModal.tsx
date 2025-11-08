@@ -1,20 +1,13 @@
-import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react';
-import type { BearFilter } from '../types/bears';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
+import { ACCEPTABLE_STATUSES } from '../lib/geojson';
+import type { BearFilter, BearStatus } from '../types/bears';
 
 const years = Array.from({ length: 2025 - 2017 + 1 }, (_, index) => 2017 + index);
 const months = Array.from({ length: 12 }, (_, index) => index + 1);
-const iconFilterOptions: { label: string; filename: string }[] = [
-  { label: 'ヒグマ', filename: 'bear.svg' },
-  { label: 'ヒグマらしき動物', filename: 'like-bear.svg' },
-  { label: 'フン', filename: 'excrement.svg' },
-  { label: '足跡', filename: 'footprint.svg' },
-  { label: 'カメラ', filename: 'camera.svg' },
-  { label: '声', filename: 'voice.svg' },
-  { label: 'その他', filename: 'other.svg' },
-];
+const statusOptions: BearStatus[] = ACCEPTABLE_STATUSES;
 
 /**
- * 年・月・アイコンによる絞り込み条件を入力するモーダルを表示する。
+ * 年・月・状況による絞り込み条件を入力するモーダルを表示する。
  *
  * @param {{ isOpen: boolean; defaultFilter: BearFilter; onApply: (filter: BearFilter) => void; onClose: () => void; onReset: () => void }} props モーダルの開閉状態とイベントハンドラ群
  * @returns {JSX.Element | null} モーダルの JSX。非表示の場合は null
@@ -34,7 +27,7 @@ const FilterModal = ({
 }): JSX.Element | null => {
   const [year, setYear] = useState<number | ''>(defaultFilter.year ?? '');
   const [month, setMonth] = useState<number | ''>(defaultFilter.month ?? '');
-  const [icon, setIcon] = useState<string>(defaultFilter.icon ?? '');
+  const [status, setStatus] = useState<BearStatus | ''>(defaultFilter.status ?? '');
   const containerRef = useRef<HTMLDivElement | null>(null);
   const firstFieldRef = useRef<HTMLSelectElement | null>(null);
 
@@ -43,7 +36,7 @@ const FilterModal = ({
     if (isOpen) {
       setYear(defaultFilter.year ?? '');
       setMonth(defaultFilter.month ?? '');
-      setIcon(defaultFilter.icon ?? '');
+      setStatus(defaultFilter.status ?? '');
     }
   }, [defaultFilter, isOpen]);
 
@@ -92,19 +85,15 @@ const FilterModal = ({
     };
   }, [isOpen, onClose]);
 
-  const filterPayload = useMemo<BearFilter>(
-    () => ({
-      year: typeof year === 'number' ? year : undefined,
-      month: typeof month === 'number' ? month : undefined,
-      icon: icon || undefined,
-    }),
-    [icon, month, year],
-  );
-
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     // フォームのデフォルト送信を抑止し、親へ条件を通知する
     event.preventDefault();
-    onApply(filterPayload);
+    const payload: BearFilter = {
+      year: typeof year === 'number' ? year : undefined,
+      month: typeof month === 'number' ? month : undefined,
+      status: status || undefined,
+    };
+    onApply(payload);
     onClose();
   };
 
@@ -112,7 +101,7 @@ const FilterModal = ({
     // 全項目をリセットしてワイルドカード状態に戻す
     setYear('');
     setMonth('');
-    setIcon('');
+    setStatus('');
     onReset();
   };
 
@@ -160,11 +149,11 @@ const FilterModal = ({
             </select>
           </label>
           <label>
-            アイコン
-            <select value={icon} onChange={(event) => setIcon(event.target.value)}>
+            状況
+            <select value={status} onChange={(event) => setStatus(event.target.value as BearStatus | '')}>
               <option value="">すべて</option>
-              {iconFilterOptions.map(({ label, filename }) => (
-                <option key={`icon-${filename}`} value={filename}>
+              {statusOptions.map((label) => (
+                <option key={`status-${label}`} value={label}>
                   {label}
                 </option>
               ))}
