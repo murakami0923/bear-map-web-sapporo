@@ -1,18 +1,7 @@
-export type BearStatus =
-  | 'クマを目撃'
-  | 'ヒグマらしき動物を目撃'
-  | 'フンを確認'
-  | '足跡を確認'
-  | 'その他'
-  | 'ヒグマを目撃';
-
 export interface BearProps {
   year: number;
   month: number;
-  status: BearStatus;
   id?: string;
-  title?: string;
-  note?: string;
   icon?: BearIconName;
   [key: string]: unknown;
 }

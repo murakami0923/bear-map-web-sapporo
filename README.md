@@ -83,8 +83,6 @@ OpenStreetMap の地図を背景に、**熊の出没情報**（GeoJSON）をプ�
         "year": 2024,
         "month": 9,
         "status": "クマを目撃",
-        "title": "住宅地付近で目撃",
-        "note": "夕方に単独の個体"
       }
     }
   ]

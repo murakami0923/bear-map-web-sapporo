@@ -3,17 +3,8 @@ import type {
   BearFeature,
   BearFeatureCollection,
   BearProps,
-  BearStatus,
   BearIconName,
 } from '../types/bears';
-
-export const ACCEPTABLE_STATUSES: BearStatus[] = [
-  'クマを目撃',
-  'ヒグマらしき動物を目撃',
-  'フンを確認',
-  '足跡を確認',
-  'その他',
-];
 
 export const ACCEPTABLE_ICON_FILENAMES: BearIconName[] = [
   'bear.svg',
@@ -24,16 +15,6 @@ export const ACCEPTABLE_ICON_FILENAMES: BearIconName[] = [
   'voice.svg',
   'other.svg',
 ];
-
-/** @type {Record<string, BearStatus>} */
-const STATUS_NORMALIZATION_TABLE: Record<string, BearStatus> = {
-  クマを目撃: 'クマを目撃',
-  ヒグマらしき動物を目撃: 'ヒグマらしき動物を目撃',
-  フンを確認: 'フンを確認',
-  足跡を確認: '足跡を確認',
-  その他: 'その他',
-  ヒグマを目撃: 'クマを目撃',
-};
 
 /**
  * 指定されたアイコンファイル名が許容リストに含まれるか確認する。
@@ -71,21 +52,6 @@ export const isValidMonth = (month: unknown): month is number => {
 };
 
 /**
- * 指定された状況文字列を既定のカテゴリに正規化する。
- *
- * @param {unknown} status 生データとして取得した状況文字列
- * @returns {BearStatus | undefined} 正常化された状況。照合できない場合は undefined
- */
-export const normalizeStatus = (status: unknown): BearStatus | undefined => {
-  // 未定義や空文字はそのまま undefined を返却する
-  if (!status || typeof status !== 'string') {
-    return undefined;
-  }
-  // 対応表に存在するかを確認し、なければ undefined
-  return STATUS_NORMALIZATION_TABLE[status] ?? undefined;
-};
-
-/**
  * GeoJSON Feature の properties を BearProps 型へマッピングする。
  *
  * @param {Record<string, unknown>} rawProperties GeoJSON の生のプロパティ
@@ -100,32 +66,17 @@ export const mapProperties = (
   }
 
   // データ源によって年/月/状況のキーが異なるため、候補を順番にチェックする
-  const dateString = String(rawProperties['日付'] ?? rawProperties['date'] ?? '');
-  const statusRaw = rawProperties['状況'] ?? rawProperties['status'];
-  const note = rawProperties['note'] ?? rawProperties['備考'];
-  const titleCandidate = rawProperties['title'] ?? rawProperties['出没場所'] ?? rawProperties['location'];
+  const dateString = rawProperties['date'];
   const iconRaw = rawProperties['icon'];
 
   // 日付文字列から年と月を抽出する
-  const date = dateString ? new Date(dateString) : undefined;
-  const yearCandidates = [
-    rawProperties['year'],
-    rawProperties['Year'],
-    rawProperties['年'],
-    date?.getFullYear(),
-  ].filter((value) => typeof value === 'number' || value instanceof Number) as number[];
+  const yearCandidates = [rawProperties['year']].filter((value) => typeof value === 'number' || value instanceof Number) as number[];
 
   const year = yearCandidates.find((candidate) => isValidYear(Number(candidate)));
-  const monthCandidates = [
-    rawProperties['month'],
-    rawProperties['Month'],
-    rawProperties['月'],
-    date ? date.getMonth() + 1 : undefined,
-  ].filter((value) => typeof value === 'number' || value instanceof Number) as number[];
+  const monthCandidates = [rawProperties['month']].filter((value) => typeof value === 'number' || value instanceof Number) as number[];
 
   const month = monthCandidates.find((candidate) => isValidMonth(Number(candidate)));
-  const status = normalizeStatus(statusRaw) ?? 'その他';
-
+  
   // 年と月のいずれかが取れない場合はフィルタ対象から除外する
   if (!year || !month) {
     return undefined;
@@ -135,10 +86,7 @@ export const mapProperties = (
     ...rawProperties,
     year,
     month,
-    status,
     icon: normalizeIconName(iconRaw),
-    title: typeof titleCandidate === 'string' ? titleCandidate : undefined,
-    note: typeof note === 'string' ? note : undefined,
   };
 };
 
