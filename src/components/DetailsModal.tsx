@@ -33,13 +33,11 @@ const DetailsModal = ({ feature, onClose }: { feature: BearFeature | null; onClo
     return null;
   }
 
-  const entries = Object.entries(feature.properties);
-
   return (
     <div className="modal-backdrop" role="dialog" aria-modal="true">
       <div className="modal-content details-modal">
         <header className="modal-header">
-          <h2>出没詳細</h2>
+          <h2>出没情報</h2>
           <button
             type="button"
             className="modal-close"
@@ -53,12 +51,18 @@ const DetailsModal = ({ feature, onClose }: { feature: BearFeature | null; onClo
         <div className="modal-body">
           <table>
             <tbody>
-              {entries.map(([key, value]) => (
-                <tr key={`detail-${key}`}>
-                  <th>{key}</th>
-                  <td>{String(value)}</td>
-                </tr>
-              ))}
+              <tr>
+                <th>日付</th>
+                <td>{String(feature.properties.datetime)}</td>
+              </tr>
+              <tr>
+                <th>場所</th>
+                <td>{String(feature.properties.location)}</td>
+              </tr>
+              <tr>
+                <th>状況</th>
+                <td>{String(feature.properties.status)}</td>
+              </tr>
             </tbody>
           </table>
         </div>
