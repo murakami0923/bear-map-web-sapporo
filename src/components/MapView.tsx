@@ -124,7 +124,7 @@ const MapView = (): JSX.Element => {
     return JSON.stringify({
       year: filter.year ?? 'all',
       month: filter.month ?? 'all',
-      status: filter.status ?? 'all',
+      icon: filter.icon ?? 'all',
     });
   }, [filter]);
 

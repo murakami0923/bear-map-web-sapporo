@@ -13,7 +13,7 @@ export interface BearProps {
   id?: string;
   title?: string;
   note?: string;
-  icon?: string;
+  icon?: BearIconName;
   [key: string]: unknown;
 }
 
@@ -34,5 +34,14 @@ export interface BearFeatureCollection {
 export interface BearFilter {
   year?: number;
   month?: number;
-  status?: BearStatus;
+  icon?: BearIconName;
 }
+
+export type BearIconName =
+  | 'bear.svg'
+  | 'like-bear.svg'
+  | 'excrement.svg'
+  | 'footprint.svg'
+  | 'camera.svg'
+  | 'voice.svg'
+  | 'other.svg';

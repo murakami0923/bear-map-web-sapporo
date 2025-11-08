@@ -1,4 +1,11 @@
-import type { BearFilter, BearFeature, BearFeatureCollection, BearProps, BearStatus } from '../types/bears';
+import type {
+  BearFilter,
+  BearFeature,
+  BearFeatureCollection,
+  BearProps,
+  BearStatus,
+  BearIconName,
+} from '../types/bears';
 
 export const ACCEPTABLE_STATUSES: BearStatus[] = [
   'クマを目撃',
@@ -6,6 +13,16 @@ export const ACCEPTABLE_STATUSES: BearStatus[] = [
   'フンを確認',
   '足跡を確認',
   'その他',
+];
+
+export const ACCEPTABLE_ICON_FILENAMES: BearIconName[] = [
+  'bear.svg',
+  'like-bear.svg',
+  'excrement.svg',
+  'footprint.svg',
+  'camera.svg',
+  'voice.svg',
+  'other.svg',
 ];
 
 /** @type {Record<string, BearStatus>} */
@@ -16,6 +33,19 @@ const STATUS_NORMALIZATION_TABLE: Record<string, BearStatus> = {
   足跡を確認: '足跡を確認',
   その他: 'その他',
   ヒグマを目撃: 'クマを目撃',
+};
+
+/**
+ * 指定されたアイコンファイル名が許容リストに含まれるか確認する。
+ *
+ * @param {unknown} iconName チェック対象の値
+ * @returns {BearIconName | undefined} 許容リスト内ならファイル名、そうでなければ undefined
+ */
+export const normalizeIconName = (iconName: unknown): BearIconName | undefined => {
+  if (!iconName || typeof iconName !== 'string') {
+    return undefined;
+  }
+  return ACCEPTABLE_ICON_FILENAMES.includes(iconName as BearIconName) ? (iconName as BearIconName) : undefined;
 };
 
 /**
@@ -74,6 +104,7 @@ export const mapProperties = (
   const statusRaw = rawProperties['状況'] ?? rawProperties['status'];
   const note = rawProperties['note'] ?? rawProperties['備考'];
   const titleCandidate = rawProperties['title'] ?? rawProperties['出没場所'] ?? rawProperties['location'];
+  const iconRaw = rawProperties['icon'];
 
   // 日付文字列から年と月を抽出する
   const date = dateString ? new Date(dateString) : undefined;
@@ -105,6 +136,7 @@ export const mapProperties = (
     year,
     month,
     status,
+    icon: normalizeIconName(iconRaw),
     title: typeof titleCandidate === 'string' ? titleCandidate : undefined,
     note: typeof note === 'string' ? note : undefined,
   };
@@ -179,14 +211,14 @@ export const parseFeatureCollection = (json: unknown): BearFeatureCollection => 
 export const filterFeatures = (features: BearFeature[], filter: BearFilter): BearFeature[] => {
   // 条件の AND 結合で絞り込み、未指定項目はワイルドカード扱いとする
   return features.filter((feature) => {
-    const { year, month, status } = feature.properties;
+    const { year, month, icon } = feature.properties;
     if (filter.year && year !== filter.year) {
       return false;
     }
     if (filter.month && month !== filter.month) {
       return false;
     }
-    if (filter.status && status !== filter.status) {
+    if (filter.icon && icon !== filter.icon) {
       return false;
     }
     return true;
