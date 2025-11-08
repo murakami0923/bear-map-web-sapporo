@@ -12,6 +12,7 @@ export interface BearProps {
   status: BearStatus;
   title?: string;
   note?: string;
+  icon?: string;
   [key: string]: unknown;
 }
 
