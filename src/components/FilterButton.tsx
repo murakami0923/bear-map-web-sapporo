@@ -1,6 +1,6 @@
 import type { MouseEventHandler } from 'react';
 
-const FILTER_ICON_URL = '/icon/filter.svg';
+const FILTER_ICON_URL = import.meta.env.VITE_ROOT_DIR + 'icon/filter.svg';
 
 /**
  * 検索条件モーダルを開くためのフィルタボタンを表示する。

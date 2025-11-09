@@ -3,7 +3,7 @@ import type { Map as MapLibreMap, Marker } from 'maplibre-gl';
 import { Marker as MapLibreMarker } from 'maplibre-gl';
 import type { BearFeature } from '../types/bears';
 
-const ICON_BASE_PATH = '/icon/';
+const ICON_BASE_PATH = import.meta.env.VITE_ROOT_DIR + 'icon/';
 const DEFAULT_ICON_FILENAME = 'bear.svg';
 
 /**

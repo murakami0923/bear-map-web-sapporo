@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Marker as MapLibreMarker } from 'maplibre-gl';
-const ICON_BASE_PATH = '/icon/';
+const ICON_BASE_PATH = import.meta.env.VITE_ROOT_DIR + 'icon/';
 const DEFAULT_ICON_FILENAME = 'bear.svg';
 /**
  * GeoJSON の icon プロパティに基づいて描画するアイコンの URL を生成する。
