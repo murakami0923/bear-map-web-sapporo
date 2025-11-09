@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { filterFeatures, parseFeatureCollection } from '../lib/geojson';
-const DATA_URL = '/data/bears.geojson';
+const DATA_URL = import.meta.env.VITE_ROOT_DIR + 'data/bears.geojson';
 /**
  * 熊の出没データを取得し、フィルタ条件に基づいて抽出結果を返す。
  *

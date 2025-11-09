@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import MapView from '../components/MapView';
-import '../styles/index.css?ts=20251108-2030';
+import '../styles/index.css';
 /**
  * アプリ全体のレイアウトを構築し、地図コンポーネントとフッターを配置する。
  *
