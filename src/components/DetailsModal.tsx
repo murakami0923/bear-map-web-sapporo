@@ -33,7 +33,7 @@ const DetailsModal = ({ feature, onClose }: { feature: BearFeature | null; onClo
     return null;
   }
 
-  const iconUrl = '/icon/' + String(feature.properties.icon);
+  const iconUrl = import.meta.env.VITE_ROOT_DIR + 'icon/' + String(feature.properties.icon);
 
   return (
     <div className="modal-backdrop" role="dialog" aria-modal="true">
