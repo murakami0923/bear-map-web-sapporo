@@ -44,7 +44,7 @@ const App = (): JSX.Element => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            札幌市オープンデータ「熊の出没情報」
+            札幌市オープンデータ「札幌市内のヒグマ出没情報」
           </a>
           <br />
           このアプリケーションでは、元データ（CSV形式）を加工（GeoJSON形式へ変換）して利用しています。
