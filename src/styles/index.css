@@ -104,6 +104,24 @@ main {
   min-height: 1.5rem;
 }
 
+.header-menu-link {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  padding: 0.4rem 0.5rem;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: #1f2933;
+}
+
+.header-menu-link:hover,
+.header-menu-link:focus-visible {
+  background-color: #f1f5f9;
+  outline: none;
+}
+
 .map-wrapper {
   flex: 1;
   min-height: 480px;
@@ -263,6 +281,70 @@ main {
   font-weight: 600;
 }
 
+.about-page {
+  flex: 1;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.about-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.about-page-subtitle {
+  margin: 0;
+  font-size: 0.925rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.about-page-lead {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  color: #475569;
+}
+
+.about-card {
+  background-color: #fff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  padding: 1.5rem;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
+}
+
+.about-card h2 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.15rem;
+}
+
+.about-list,
+.about-steps {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: #1f2933;
+}
+
+.about-list li,
+.about-steps li {
+  margin-bottom: 0.5rem;
+}
+
+.about-list li:last-child,
+.about-steps li:last-child {
+  margin-bottom: 0;
+}
+
 .app-footer {
   /* text-align: center; */
   padding: 1rem 0.5rem;
@@ -298,5 +380,13 @@ main {
 
   .modal-content {
     max-width: 100%;
+  }
+
+  .about-page {
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  .about-page-header {
+    flex-direction: column;
   }
 }
