@@ -104,13 +104,13 @@ const AboutPage = ({ onNavigateHome }: AboutPageProps): JSX.Element => {
         <div className="contact-links">
           <div className="contact-item">
             <h3>メール</h3>
-            <a href="mailto:murakami77@nifty.com">murakami77@nifty.com</a>
+            <a href="mailto:murakami77@nifty.com?subject=%E6%9C%AD%E5%B9%8C%E5%B8%82%E3%81%AE%E3%83%92%E3%82%B0%E3%83%9E%E5%87%BA%E6%B2%A1%E3%83%9E%E3%83%83%E3%83%97%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B&body=">murakami77@nifty.com</a>
             <div className="contact-qr">
               <img
                 src={QR_BASE_PATH + 'qr_sqare_mail_nifty.png'}
                 alt="メールアドレスのQRコード"
-                width="128"
-                height="128"
+                width="256"
+                height="256"
               />
             </div>
           </div>
@@ -123,6 +123,34 @@ const AboutPage = ({ onNavigateHome }: AboutPageProps): JSX.Element => {
               <img
                 src={QR_BASE_PATH + 'qr_sqare_x_murakami77mm.png'}
                 alt="X アカウントのQRコード"
+                width="128"
+                height="128"
+              />
+            </div>
+          </div>
+          <div className="contact-item">
+            <h3>Facebook</h3>
+            <a href="https://www.facebook.com/masashi0923" target="_blank" rel="noreferrer">
+              masashi0923
+            </a>
+            <div className="contact-qr">
+              <img
+                src={QR_BASE_PATH + 'qr_sqare_facebook_masashi0923.png'}
+                alt="Facebook アカウントのQRコード"
+                width="128"
+                height="128"
+              />
+            </div>
+          </div>
+          <div className="contact-item">
+            <h3>GitHub</h3>
+            <a href="https://github.com/murakami0923" target="_blank" rel="noreferrer">
+              murakami0923
+            </a>
+            <div className="contact-qr">
+              <img
+                src={QR_BASE_PATH + 'qr_sqare_github_murakami0923.png'}
+                alt="GitHub アカウントのQRコード"
                 width="128"
                 height="128"
               />
