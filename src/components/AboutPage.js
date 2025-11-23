@@ -1,5 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 const ICON_BASE_PATH = import.meta.env.VITE_ROOT_DIR + 'icon/';
+const QR_BASE_PATH = import.meta.env.VITE_ROOT_DIR + 'qr/';
 /**
  * 「このサイトについて」ページを構築し、アプリの目的と利用データを案内する。
  *

@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 
 const ICON_BASE_PATH = import.meta.env.VITE_ROOT_DIR + 'icon/';
+const QR_BASE_PATH = import.meta.env.VITE_ROOT_DIR + 'qr/';
 
 interface AboutPageProps {
   onNavigateHome: () => void;
