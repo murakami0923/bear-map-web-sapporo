@@ -335,6 +335,14 @@ main {
   color: #1f2933;
 }
 
+.about-icon-list {
+  list-style: none;
+}
+
+.about-icon-list img {
+  margin-right: 0.5rem;
+}
+
 .about-list li,
 .about-steps li {
   margin-bottom: 0.5rem;

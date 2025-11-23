@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react';
 
+const ICON_BASE_PATH = import.meta.env.VITE_ROOT_DIR + 'icon/';
+
 interface AboutPageProps {
   onNavigateHome: () => void;
 }
@@ -42,18 +44,42 @@ const AboutPage = ({ onNavigateHome }: AboutPageProps): JSX.Element => {
         <h2>主な機能</h2>
         <ul className="about-list">
           {renderListItem('OpenStreetMap タイルを背景に MapLibre で地図を表示します。')}
-          {renderListItem('熊アイコン（icon/bear.svg）で出没地点を示し、クリックで詳細をモーダル表示します。')}
+          {renderListItem('出没地点をアイコンで示し、クリックあるいはタップで詳細をモーダル表示します。')}
+          {renderListItem('※アイコンの種類については後述の説明をご参照ください。')}
           {renderListItem('フィルタモーダルから年・月・状況を組み合わせて検索できます。')}
           {renderListItem('GeoJSON データは data/bears.geojson に配置したものをフェッチして利用します。')}
         </ul>
       </div>
 
+      {/* アイコンの説明 */}
+      <div className="about-card">
+        <h2>アイコンの種類について</h2>
+        <div>
+          <ul className="about-icon-list">
+            <li><img src={ICON_BASE_PATH + 'bear.svg'} width="32px" height="32px" /> 熊を目撃</li>
+            <li><img src={ICON_BASE_PATH + 'like-bear.svg'} width="32px" height="32px" /> 熊らしき動物を目撃</li>
+            <li><img src={ICON_BASE_PATH + 'excrement.svg'} width="32px" height="32px" /> 糞を目撃</li>
+            <li><img src={ICON_BASE_PATH + 'footprint.svg'} width="32px" height="32px" /> 足跡を目撃</li>
+            <li><img src={ICON_BASE_PATH + 'camera.svg'} width="32px" height="32px" /> カメラで目撃</li>
+            <li><img src={ICON_BASE_PATH + 'voice.svg'} width="32px" height="32px" /> 鳴き声を聞いた</li>
+            <li><img src={ICON_BASE_PATH + 'other.svg'} width="32px" height="32px" /> その他</li>
+          </ul>
+        </div>
+        <p>
+          なお、目撃情報に複数の記述が含まれる場合は、このリストの順で優先度を設定しています。
+        </p>
+        <p>
+          例えば、「糞を目撃」と「足跡を目撃」の両方が記述されている場合、「糞を目撃」のアイコンとしています。<br/>
+          この場合、糞はマーキングの目的もあり、縄張りの主張や個体間のコミュニケーションなどで利用され、人への影響が多いと考えられるため、優先度を上げています。
+        </p>
+      </div>
+
       {/* データの出典をまとめたセクション */}
       <div className="about-card">
-        <h2>データソース</h2>
+        <h2>データの出典について</h2>
         <p>
-          札幌市オープンデータ『札幌市内のヒグマ出没情報』を加工した GeoJSON を使用しています。原データは
-          CC BY 4.0 ライセンスで公開されており、地図タイルは OpenStreetMap contributors の提供です。
+          札幌市オープンデータ『札幌市内のヒグマ出没情報』を加工した GeoJSON を使用しています。<br/>
+          原データは CC BY 4.0 ライセンスで公開されております。
         </p>
       </div>
 
@@ -66,6 +92,14 @@ const AboutPage = ({ onNavigateHome }: AboutPageProps): JSX.Element => {
           <li>表示された熊アイコンをクリックすると詳細を確認できます。</li>
           <li>「フィルタ解除」ボタンで条件を初期化できます。</li>
         </ol>
+      </div>
+
+      {/* 問い合わせについて */}
+      <div className="about-card">
+        <h2>お問い合わせ先</h2>
+        <p>
+          このサイトについてのお問い合わせ（ご質問、ご要望、ご指摘など）については、下記の連絡先へお願いいたします。
+        </p>
       </div>
     </section>
   );
