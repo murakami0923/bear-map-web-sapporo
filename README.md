@@ -1,76 +1,83 @@
-# 熊出没マップ（React TypeScript + OpenStreetMap）
+# 熊出没マップ（React + TypeScript + MapLibre GL）
 
-OpenStreetMap の地図を背景に、**熊の出没情報**（GeoJSON）をプロットする Web アプリです。  
-**React TypeScript** で実装し、**関数ヘッダ/処理コメントは日本語**で記載するポリシーです。
+OpenStreetMap のタイルを背景に、GeoJSON 化した **熊の出没情報** を MapLibre GL で描画する Web アプリです。  
+React + TypeScript + Vite で構築し、**関数ヘッダ/主要処理のコメントは必ず日本語**で記述するポリシーを採用しています。
 
 ---
 
-## ✅ 機能
+## ✅ 主な機能
 
-- `data/bears.geojson`（開発者設置）から出没情報を読み込み、地図上に **`icon/bear.svg`** でアイコン表示
-- アイコンのクリック/タップで **詳細モーダル** を表示（`properties` を整形表示）
-- 左上の **フィルタアイコン（`icon/filter.svg`）** から **検索条件モーダル** を開く
-  - 条件：**年（2017〜2025）/ 月（1〜12）/ 状況（5 種）**
-  - 「絞り込む」で条件適用（AND 条件、未選択はワイルドカード）
-- ページ下部に OpenStreetMap のクレジット（ https://openstreetmap/ へのリンク）
+- `data/bears.geojson` から出没データを読み込み、**MapLibre GL** 上にカスタム画像のマーカーをプロット
+- マーカーをクリック/Enter/Space で **詳細モーダル** を開き、日時・場所・状況・使用アイコンをテーブル表示
+- フローティングの **フィルタボタン（`icon/filter.svg`）** からモーダルを開き、**年（2017〜2025）/ 月（1〜12）/ アイコン種別** の AND 条件で絞り込み  
+  （未指定の条件はワイルドカード扱い）
+- ヘッダ左上の 3 点メニュー（`HeaderMenu`）から **「このサイトについて」ページ** へ遷移できる簡易ルーティングを実装
+- About ページでは、機能概要・アイコンの意味・データ出典・利用方法に加えて、**メール / X（旧 Twitter）のリンクと QR コード付き問い合わせ先** を掲載
+- フッターに OpenStreetMap / CC BY 4.0（札幌市オープンデータ）のクレジットとリンクを常時表示
 
 ---
 
 ## 🧰 技術スタック
 
 - React 18 + TypeScript
-- Vite（開発/ビルド）
-- Leaflet / react-leaflet
-- ESLint + Prettier（コード品質）
+- Vite 5（`VITE_ROOT_DIR` を base URL として利用）
+- MapLibre GL JS（`maplibre-gl`）
+- ESLint（typescript-eslint） + Prettier
+- gh-pages（`npm run deploy` で GitHub Pages へ配信可能）
 
 ---
 
-## 📁 ディレクトリ
+## 📁 ディレクトリ構成（抜粋）
 
 ```
 .
 ├─ public/
-│  └─ icon/
-│     ├─ bear.svg
-│     └─ filter.svg
+│  ├─ icon/
+│  │  ├─ bear.svg / like-bear.svg / excrement.svg / footprint.svg
+│  │  ├─ camera.svg / voice.svg / other.svg / filter.svg / menu.svg
+│  │  └─ ...（MapLibre マーカーや UI ボタン用）
+│  └─ qr/
+│     ├─ qr_sqare_mail_nifty.png
+│     └─ qr_sqare_x_murakami77mm.png
 ├─ data/
-│  └─ bears.geojson
+│  └─ bears.geojson          # 札幌市オープンデータを加工した GeoJSON
 ├─ src/
-│  ├─ app/ (App.tsx, main.tsx)
-│  ├─ components/ (MapView.tsx, FilterModal.tsx など)
+│  ├─ app/
+│  │  ├─ App.tsx             # ルーティングとフッター
+│  │  └─ main.tsx
+│  ├─ components/
+│  │  ├─ MapView.tsx / BearMarker.tsx / FilterButton.tsx
+│  │  ├─ FilterModal.tsx / DetailsModal.tsx
+│  │  ├─ HeaderMenu.tsx      # 3 点メニュー
+│  │  └─ AboutPage.tsx       # お問い合わせ情報付き
 │  ├─ hooks/ (useBearData.ts)
-│  ├─ lib/ (geojson.ts)
+│  ├─ lib/ (geojson.ts)      # フィルタ・バリデーション
 │  ├─ styles/ (index.css)
 │  └─ types/ (bears.d.ts)
-├─ package.json / tsconfig.json / .eslintrc.cjs / .prettierrc
-└─ AGENTS.md / README.md
+├─ AGENTS.md / README.md
+└─ vite.config.ts / package.json / tsconfig*.json / .eslintrc.cjs / .prettierrc
 ```
 
 ---
 
-## 🚀 セットアップ
+## 🚀 セットアップ手順
 
-1. リポジトリ作成（Vite）
+1. 依存インストール
    ```bash
-   npm create vite@latest bear-map -- --template react-ts
-   cd bear-map
-   npm i
-   npm i leaflet react-leaflet
-   npm i -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin prettier
+   npm install
    ```
+2. 必須アセットを配置
+   - `data/bears.geojson`
+   - `public/icon/*.svg`（マーカー/フィルタ/メニュー）
+   - `public/qr/*.png`（問い合わせ QR。デフォルトでは `qr_sqare_mail_nifty.png` と `qr_sqare_x_murakami77mm.png` を使用）
+3. `.env` などで `VITE_ROOT_DIR` を設定  
+   GitHub Pages で `/bear-map-web-sapporo/` などサブディレクトリ公開する場合は、そのパスを指定します。ローカル開発は `/` が推奨です。
 
-2. アセット配置
-   - `public/icon/bear.svg`（**必須**）
-   - `public/icon/filter.svg`（**必須**）
-   - `data/bears.geojson`（**必須**）
-
-3. 地図タイル（例）
-   - OSM 標準タイル（利用規約遵守）  
-     `https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png`
+開発サーバは `npm run dev`、本番ビルドは `npm run build`、プレビューは `npm run preview` です。
 
 ---
 
-## 🗂️ GeoJSON の例（最小）
+## 🗂️ GeoJSON 仕様
 
 ```json
 {
@@ -80,49 +87,65 @@ OpenStreetMap の地図を背景に、**熊の出没情報**（GeoJSON）をプ�
       "type": "Feature",
       "geometry": { "type": "Point", "coordinates": [141.3545, 43.0621] },
       "properties": {
-        "year": 2024,
-        "month": 9,
+        "id": "unique-id",
+        "datetime": "2024-09-01T09:30:00+09:00",
+        "location": "札幌市中央区○○",
         "status": "クマを目撃",
+        "icon": "bear.svg",
+        "year": 2024,
+        "month": 9
       }
     }
   ]
 }
 ```
 
-- `coordinates`: `[lng, lat]`（経度, 緯度）に注意
-- `year`: 2017〜2025、`month`: 1〜12、`status`: 下記のいずれか
-  - `クマを目撃`, `ヒグマらしき動物を目撃`, `フンを確認`, `足跡を確認`, `その他`
+- `coordinates` は `[longitude, latitude]`
+- `year`: 2017〜2025 / `month`: 1〜12（`lib/geojson.ts` でバリデーション）
+- `icon`: `public/icon/` 配下のファイル名（`bear.svg`, `like-bear.svg`, `excrement.svg`, `footprint.svg`, `camera.svg`, `voice.svg`, `other.svg` のいずれか）
+- その他の `properties` はモーダル表示時にテーブル化されるため、`datetime`, `location`, `status` などの文字列を推奨
+
+`useBearData` フックでフェッチ・正規化後、`filterFeatures` が AND 条件で抽出します。
 
 ---
 
-## 📜 スクリプト
+## 🔎 フィルタ仕様
+
+- 条件：`year`, `month`, `icon`
+- `FilterModal` で選択した値のみが `BearFilter` に渡り、未入力はフィールドごとに削除される
+- `BearMarker` は `properties.icon` を参照して各種アイコンを描画
+- リセットボタン（ヘッダ右の「フィルタ解除」またはモーダル内「クリア」）で全件表示に戻す
+
+---
+
+## 📜 利用スクリプト
 
 ```bash
-npm run dev       # 開発サーバ
-npm run build     # 本番ビルド
-npm run preview   # ビルド成果物のプレビュー
-npm run lint      # ESLint 実行
+npm run dev        # 開発サーバ
+npm run build      # TypeScript 型チェック + Vite build
+npm run preview    # ビルド成果物のローカル確認
+npm run lint       # ESLint
+npm run deploy     # dist を gh-pages へ公開
 ```
 
----
-
-## 🧪 テスト観点（抜粋）
-
-- フィルタ条件の AND ロジックと未選択時のワイルドカード動作
-- モーダルの開閉・フォーカストラップ・ESC で閉じる
-- GeoJSON 不正値の無視（範囲外の年/月、未定義 status）
-- アイコンの重なり/ズーム・パン動作
-- フッターの著作権リンクが機能する
+JavaScript 生成物を掃除するユーティリティとして `npm run ls-js` / `npm run clean-js` も用意しています。
 
 ---
 
-## 🔒 ライセンス / 出典表記
+## 🧪 テスト観点
 
-- OpenStreetMap データは OpenStreetMap Contributors に帰属します。利用ポリシー/クレジット表記に従ってください。
-- タイル利用のレート制限やキャッシュポリシーに注意してください。
+- `useBearData`：HTTP エラーや壊れた GeoJSON を検知し、UI にエラーバッジを表示できるか
+- フィルタ：全件／年のみ／年月／年月＋アイコンなど、未指定をワイルドカード扱いにできているか
+- モーダル：フォーカストラップ、ESC で閉じる、キーボード操作でのマーカー選択
+- ルーティング：`/` ↔ `/about` を pushState で遷移し、リロードや戻る操作でも表示が維持されるか
+- About ページ：メール・X のリンクと QR コード（`public/qr`）が崩れず表示されるか
 
 ---
 
-## 🧭 参照
+## 🔒 出典とクレジット
 
-- 詳細な開発・命名・コメント規約、コンポーネント責務、受け入れ基準は **AGENTS.md** を参照してください。
+- 地図タイル：OpenStreetMap、ODbL ライセンス
+- データ：札幌市オープンデータ「札幌市内のヒグマ出没情報」（CC BY 4.0）  
+  本アプリでは CSV を GeoJSON へ変換して利用しています。
+
+詳細な実装ガイドラインやコメント規約、受け入れ基準は **AGENTS.md** を参照してください。
