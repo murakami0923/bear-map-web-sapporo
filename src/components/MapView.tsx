@@ -5,20 +5,27 @@ import BearMarker from './BearMarker';
 import FilterButton from './FilterButton';
 import FilterModal from './FilterModal';
 import DetailsModal from './DetailsModal';
+import HeaderMenu from './HeaderMenu';
 import { useBearData } from '../hooks/useBearData';
 import type { BearFeature, BearFilter } from '../types/bears';
 
 const SAPPORO_COORDINATES: [number, number] = [141.3545, 43.0621];
 
+interface MapViewProps {
+  onNavigateAbout?: () => void;
+}
+
 /**
  * MapLibre のマップを表示し、熊出没データをマーカーとして描画する。
  *
+ * @param {MapViewProps} props ルーティング用のコールバック
  * @returns {JSX.Element} マップと関連 UI を含む JSX
  */
-const MapView = (): JSX.Element => {
+const MapView = ({ onNavigateAbout }: MapViewProps): JSX.Element => {
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [selectedFeature, setSelectedFeature] = useState<BearFeature | null>(null);
 
   const { filteredFeatures, filter, setFilter, resetFilter, isLoading, error } = useBearData();
@@ -118,6 +125,24 @@ const MapView = (): JSX.Element => {
     resetFilter();
   }, [resetFilter]);
 
+  /**
+   * ヘッダの 3 点メニューを開閉する。
+   */
+  const handleToggleMenu = useCallback(() => {
+    setIsMenuOpen((prev) => !prev);
+  }, []);
+
+  /**
+   * メニューアイテムから「このサイトについて」へ遷移する。
+   */
+  const handleNavigateAbout = useCallback(() => {
+    if (!onNavigateAbout) {
+      return;
+    }
+    onNavigateAbout();
+    setIsMenuOpen(false);
+  }, [onNavigateAbout]);
+
   const map = mapRef.current;
 
   const markerLayerKey = useMemo(() => {
@@ -149,7 +174,10 @@ const MapView = (): JSX.Element => {
   return (
     <div className="map-container">
       <div className="map-header">
-        <h1>熊出没マップ 北海道札幌市 2017年～2025年</h1>
+        <div className="map-header-left">
+          <HeaderMenu isOpen={isMenuOpen} onToggle={handleToggleMenu} onNavigateToAbout={handleNavigateAbout} />
+          <h1>熊出没マップ 北海道札幌市 2017年～2025年</h1>
+        </div>
         <button type="button" className="secondary-button" onClick={handleResetFilter}>
           フィルタ解除
         </button>

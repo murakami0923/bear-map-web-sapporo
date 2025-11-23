@@ -6,17 +6,20 @@ import BearMarker from './BearMarker';
 import FilterButton from './FilterButton';
 import FilterModal from './FilterModal';
 import DetailsModal from './DetailsModal';
+import HeaderMenu from './HeaderMenu';
 import { useBearData } from '../hooks/useBearData';
 const SAPPORO_COORDINATES = [141.3545, 43.0621];
 /**
  * MapLibre のマップを表示し、熊出没データをマーカーとして描画する。
  *
+ * @param {MapViewProps} props ルーティング用のコールバック
  * @returns {JSX.Element} マップと関連 UI を含む JSX
  */
-const MapView = () => {
+const MapView = ({ onNavigateAbout }) => {
     const mapContainerRef = useRef(null);
     const mapRef = useRef(null);
     const [isFilterOpen, setIsFilterOpen] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [selectedFeature, setSelectedFeature] = useState(null);
     const { filteredFeatures, filter, setFilter, resetFilter, isLoading, error } = useBearData();
     useEffect(() => {
@@ -99,6 +102,22 @@ const MapView = () => {
     const handleResetFilter = useCallback(() => {
         resetFilter();
     }, [resetFilter]);
+    /**
+     * ヘッダの 3 点メニューを開閉する。
+     */
+    const handleToggleMenu = useCallback(() => {
+        setIsMenuOpen((prev) => !prev);
+    }, []);
+    /**
+     * メニューアイテムから「このサイトについて」へ遷移する。
+     */
+    const handleNavigateAbout = useCallback(() => {
+        if (!onNavigateAbout) {
+            return;
+        }
+        onNavigateAbout();
+        setIsMenuOpen(false);
+    }, [onNavigateAbout]);
     const map = mapRef.current;
     const markerLayerKey = useMemo(() => {
         return JSON.stringify({
@@ -113,6 +132,6 @@ const MapView = () => {
         }
         return (_jsx(Fragment, { children: filteredFeatures.map((feature) => (_jsx(BearMarker, { map: map, feature: feature, onSelect: handleMarkerSelect }, feature.properties.id ?? `${feature.geometry.coordinates.join(',')}-${feature.properties.year}-${feature.properties.month}`))) }, markerLayerKey));
     }, [filteredFeatures, handleMarkerSelect, map, markerLayerKey]);
-    return (_jsxs("div", { className: "map-container", children: [_jsxs("div", { className: "map-header", children: [_jsx("h1", { children: "\u718A\u51FA\u6CA1\u30DE\u30C3\u30D7 \u5317\u6D77\u9053\u672D\u5E4C\u5E02 2017\u5E74\uFF5E2025\u5E74" }), _jsx("button", { type: "button", className: "secondary-button", onClick: handleResetFilter, children: "\u30D5\u30A3\u30EB\u30BF\u89E3\u9664" })] }), _jsx("div", { className: "map-wrapper", ref: mapContainerRef, "aria-label": "\u718A\u306E\u51FA\u6CA1\u30DE\u30C3\u30D7" }), _jsx(FilterButton, { onClick: openFilter }), isLoading && _jsx("div", { className: "status-badge", children: "\u8AAD\u307F\u8FBC\u307F\u4E2D..." }), error && _jsxs("div", { className: "status-badge error", children: ["\u30C7\u30FC\u30BF\u53D6\u5F97\u306B\u5931\u6557\u3057\u307E\u3057\u305F: ", error] }), markers, _jsx(FilterModal, { isOpen: isFilterOpen, defaultFilter: filter, onApply: handleApplyFilter, onClose: closeFilter, onReset: handleResetFilter }), _jsx(DetailsModal, { feature: selectedFeature, onClose: handleCloseDetails })] }));
+    return (_jsxs("div", { className: "map-container", children: [_jsxs("div", { className: "map-header", children: [_jsxs("div", { className: "map-header-left", children: [_jsx(HeaderMenu, { isOpen: isMenuOpen, onToggle: handleToggleMenu, onNavigateToAbout: handleNavigateAbout }), _jsx("h1", { children: "\u718A\u51FA\u6CA1\u30DE\u30C3\u30D7 \u5317\u6D77\u9053\u672D\u5E4C\u5E02 2017\u5E74\uFF5E2025\u5E74" })] }), _jsx("button", { type: "button", className: "secondary-button", onClick: handleResetFilter, children: "\u30D5\u30A3\u30EB\u30BF\u89E3\u9664" })] }), _jsx("div", { className: "map-wrapper", ref: mapContainerRef, "aria-label": "\u718A\u306E\u51FA\u6CA1\u30DE\u30C3\u30D7" }), _jsx(FilterButton, { onClick: openFilter }), isLoading && _jsx("div", { className: "status-badge", children: "\u8AAD\u307F\u8FBC\u307F\u4E2D..." }), error && _jsxs("div", { className: "status-badge error", children: ["\u30C7\u30FC\u30BF\u53D6\u5F97\u306B\u5931\u6557\u3057\u307E\u3057\u305F: ", error] }), markers, _jsx(FilterModal, { isOpen: isFilterOpen, defaultFilter: filter, onApply: handleApplyFilter, onClose: closeFilter, onReset: handleResetFilter }), _jsx(DetailsModal, { feature: selectedFeature, onClose: handleCloseDetails })] }));
 };
 export default MapView;
