@@ -170,8 +170,10 @@ const App = (): JSX.Element => {
             クリエイティブ・コモンズ 表示 4.0 国際ライセンス（CC BY 4.0）
           </a>{' '}
           の下で提供されています。
-          <br />
-          © 札幌市, CC BY 4.0
+        </p>
+        <p>
+          このサイトの著作権について：<br/>
+          &copy; 2025 Masashi Murakami (村上 將志).
         </p>
       </footer>
     </div>
