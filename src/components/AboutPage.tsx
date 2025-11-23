@@ -128,6 +128,34 @@ const AboutPage = ({ onNavigateHome }: AboutPageProps): JSX.Element => {
               />
             </div>
           </div>
+          <div className="contact-item">
+            <h3>Facebook</h3>
+            <a href="https://www.facebook.com/masashi0923" target="_blank" rel="noreferrer">
+              masashi0923
+            </a>
+            <div className="contact-qr">
+              <img
+                src={QR_BASE_PATH + 'qr_sqare_facebook_masashi0923.png'}
+                alt="Facebook アカウントのQRコード"
+                width="128"
+                height="128"
+              />
+            </div>
+          </div>
+          <div className="contact-item">
+            <h3>GitHub</h3>
+            <a href="https://github.com/murakami0923" target="_blank" rel="noreferrer">
+              murakami0923
+            </a>
+            <div className="contact-qr">
+              <img
+                src={QR_BASE_PATH + 'qr_sqare_github_murakami0923.png'}
+                alt="GitHub アカウントのQRコード"
+                width="128"
+                height="128"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
