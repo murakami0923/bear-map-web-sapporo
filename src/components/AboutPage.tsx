@@ -101,6 +101,34 @@ const AboutPage = ({ onNavigateHome }: AboutPageProps): JSX.Element => {
         <p>
           このサイトについてのお問い合わせ（ご質問、ご要望、ご指摘など）については、下記の連絡先へお願いいたします。
         </p>
+        <div className="contact-links">
+          <div className="contact-item">
+            <h3>メール</h3>
+            <a href="mailto:murakami77@nifty.com">murakami77@nifty.com</a>
+            <div className="contact-qr">
+              <img
+                src={QR_BASE_PATH + 'qr_sqare_mail_nifty.png'}
+                alt="メールアドレスのQRコード"
+                width="128"
+                height="128"
+              />
+            </div>
+          </div>
+          <div className="contact-item">
+            <h3>X</h3>
+            <a href="https://x.com/murakami77mm" target="_blank" rel="noreferrer">
+              @murakami77mm
+            </a>
+            <div className="contact-qr">
+              <img
+                src={QR_BASE_PATH + 'qr_sqare_x_murakami77mm.png'}
+                alt="X アカウントのQRコード"
+                width="128"
+                height="128"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
