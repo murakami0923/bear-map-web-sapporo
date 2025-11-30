@@ -7,14 +7,14 @@
 
 ## 1. 目的とスコープ
 
-- `data/bears.geojson`（開発者設置）を読み込み、`properties.icon` に応じて **public/icon/** 配下の SVG を MapLibre GL のマーカーとして表示します。
+- `data/bears.geojson`（開発者設置）を `VITE_ROOT_DIR` 起点でフェッチし、`properties.icon` に応じて **public/icon/** 配下の SVG を MapLibre GL のマーカーとして表示します（未定義アイコンは `bear.svg` にフォールバック）。
 - マーカーのクリック/タップ/Enter/Space で **DetailsModal** を表示し、GeoJSON の `properties` を整形して見やすく表示します。
 - 左上に **フィルタアイコン（icon/filter.svg）** を配置し、クリックで **検索条件入力モーダル** を表示します。
   - 検索条件：年（2017〜2025）、月（1〜12）、アイコン（`bear.svg` / `like-bear.svg` / `excrement.svg` / `footprint.svg` / `camera.svg` / `voice.svg` / `other.svg`）
-  - 「絞り込む」を押すと、GeoJSON から条件一致のデータのみ表示します（AND 条件、未指定はワイルドカード）。
-- ヘッダ左上に **メニューアイコン（icon/menu.svg）** を配置し、クリックで `/about` への遷移手段（`HeaderMenu`）を提供します。
-- `/about` ではサイトの目的・機能・アイコンの説明・データ出典・使い方および **お問い合わせ先（メール / X 各リンク + QR）** を掲載します。
-- ページ下部に OpenStreetMap / 札幌市オープンデータのクレジットおよびリンクを固定表示します。
+  - 「絞り込む」で AND 条件フィルタ、モーダル内「クリア」またはヘッダの「フィルタ解除」で全件表示に戻す。
+- ヘッダ左上に **メニューアイコン（icon/menu.svg）** を配置し、クリックで `/about` への遷移手段（`HeaderMenu`）を提供します（`VITE_ROOT_DIR` を考慮した pushState）。
+- `/about` ではサイトの目的・機能・アイコンの優先順位・データ出典・使い方および **お問い合わせ先（メール / X / Facebook / GitHub 各リンク + QR）** を掲載し、「マップへ戻る」導線を置きます。
+- ページ下部に OpenStreetMap / 札幌市オープンデータのクレジットおよびリンクを固定表示し、データ取得中/失敗時はステータスバッジで通知します。
 
 ---
 
@@ -22,17 +22,18 @@
 
 ```
 .
+├─ index.html                  # Vite エントリ（GTAG 付き）
 ├─ public/
-│  ├─ index.html
 │  ├─ icon/
 │  │  ├─ bear.svg / like-bear.svg / excrement.svg / footprint.svg / camera.svg / voice.svg / other.svg
 │  │  ├─ filter.svg       # フィルタボタン
 │  │  └─ menu.svg         # ヘッダメニュー
 │  └─ qr/
 │     ├─ qr_sqare_mail_nifty.png
-│     └─ qr_sqare_x_murakami77mm.png
-├─ data/
-│  └─ bears.geojson       # 開発者が配置（本番はAPI化しても可）
+│     ├─ qr_sqare_x_murakami77mm.png
+│     ├─ qr_sqare_facebook_masashi0923.png
+│     └─ qr_sqare_github_murakami0923.png
+├─ data/                  # Git 管理外。bears.geojson を配置
 ├─ src/
 │  ├─ app/
 │  │  ├─ App.tsx          # ルーティングとフッター
@@ -55,7 +56,6 @@
 │     └─ bears.d.ts
 ├─ .eslintrc.cjs
 ├─ .prettierrc
-├─ index.html (Vite を使う場合は public/index.html ではなくルート直下になることも)
 ├─ package.json
 ├─ tsconfig.json
 └─ README.md
@@ -108,11 +108,12 @@ export interface BearProps {
   - 左上に `FilterButton` を配置
   - クリックで `FilterModal` を開く制御
   - `HeaderMenu` や「フィルタ解除」ボタンの制御
+  - `useBearData` の `isLoading` / `error` に応じたステータスバッジ表示
 
 ### BearMarker.tsx
 - 役割：
-  - `properties.icon` に応じて `public/icon/*.svg` を用いたカスタム `Marker` を表示
-  - クリック/タップで `DetailsModal` を開くコールバックを呼び出し
+  - `properties.icon`（サニタイズ後、未定義は `bear.svg`）に応じて `public/icon/*.svg` を用いたカスタム `Marker` を表示
+  - クリック/タップ/Enter/Space で `DetailsModal` を開くコールバックを呼び出し
 
 ### FilterButton.tsx
 - 役割：
@@ -125,17 +126,20 @@ export interface BearProps {
   - 「絞り込む」ボタンで親に条件を返す
 - UI要件：
   - キーボード操作/フォーカストラップ/ESC 閉じ対応（可能な範囲でアクセシビリティ配慮）
+  - 「クリア」でフィルタとフォーム値を初期化する
 
 ### DetailsModal.tsx
 - 役割：
   - `BearMarker` から受け取った `properties` を整形して表示
-  - アイコン画像・日時・場所・状況などをテーブル表示
+  - アイコン画像・日時・場所・状況などをテーブル表示し、ESC でも閉じる
 
 ### hooks/useBearData.ts
 - 役割：
-  - `data/bears.geojson` をフェッチ
+  - `data/bears.geojson` を `VITE_ROOT_DIR` 起点でフェッチ
+  - GeoJSON をパース・バリデーションし、年/月が欠落する Feature は除外
   - 現在のフィルタ条件に基づき、表示対象の Feature を返却
-  - フィルタ条件の変更 API を提供
+  - フィルタ条件の変更 API（部分更新 + リセット）を提供
+  - `isLoading` / `error` を UI に渡してステータスバッジ表示に使う
 
 ### HeaderMenu.tsx
 - 役割：
@@ -145,11 +149,12 @@ export interface BearProps {
 ### AboutPage.tsx
 - 役割：
   - サイト概要・アイコン解説・データ出典・使い方を表示
-  - 「お問い合わせ先」でメール（`mailto:murakami77@nifty.com`）と X（`https://x.com/murakami77mm`）のリンク、`public/qr/` 配下の QR 画像を表示する
+  - 「お問い合わせ先」でメール / X / Facebook / GitHub のリンク、`public/qr/` 配下の QR 画像を表示する
+  - 「マップへ戻る」ボタンでトップへ戻す
 
 ### App.tsx
 - 役割：
-  - `/`（Map）と `/about`（AboutPage）を pushState ベースで切り替える
+  - `/`（Map）と `/about`（AboutPage）を pushState ベースで切り替える（`VITE_ROOT_DIR` / `BASE_URL` を考慮）
   - フッターに OpenStreetMap / CC BY 4.0 / 著作権表記を表示
 
 ---
@@ -179,6 +184,7 @@ export interface BearProps {
 - ベースはシンプルな CSS（または Tailwind など任意）。
 - 左上のフィルタボタンは地図 UI と干渉しないよう `position: absolute`。
 - 著作権表記はフッターに固定。
+- ローディング/エラーのステータスバッジは地図上に重ならないよう配慮する。
 
 ---
 
@@ -198,9 +204,10 @@ export interface BearProps {
 1. `data/bears.geojson` を配置すると地図上に熊アイコンが表示される。
 2. マーカーをクリックまたはキーボード操作すると `DetailsModal` で詳細を閲覧できる。
 3. フィルタモーダルで年/月/アイコンを指定し「絞り込む」を押すと表示が更新される。
-4. ヘッダメニューから `/about` へ遷移でき、メール + X（QR 付き）の問い合わせ先が表示される。
+4. ヘッダメニューから `/about` へ遷移でき、メール / X / Facebook / GitHub（QR 付き）の問い合わせ先が表示される。
 5. 日本語コメント規約が関数ヘッダ・主要処理に順守されている。
 6. ページ下部に OpenStreetMap / CC BY 4.0 のクレジットが表示され、リンクが機能する。
+7. `VITE_ROOT_DIR` を変えても `/` と `/about` の表示・遷移が正しく機能する。
 
 ---
 
@@ -211,7 +218,8 @@ export interface BearProps {
 - GeoJSON：不正値（年=2030、月=0、未定義アイコンなど）を無視
 - 表示：アイコンの重なり、ズーム/パン動作、MapLibre のリサイズ処理
 - アクセシビリティ：キーボード操作、ラベル、aria属性、ヘッダメニューの開閉
-- About：QR 画像とメール/X リンクが崩れず表示される
+- About：QR 画像とメール/X/Facebook/GitHub リンクが崩れず表示される
+- ステータスバッジ：データ取得中/失敗時に期待通り表示される
 
 ---
 
@@ -220,4 +228,5 @@ export interface BearProps {
 - 国土地理院や別タイルを使う場合は、出典表記の要件を確認。
 - 将来的に API 提供に切り替える場合、`useBearData` でフェッチ先を切り替え可能に。
 - 画像/SVG/QR のパスはビルド環境に合わせて `new URL()` などで安全に参照し、`VITE_ROOT_DIR` を考慮する。
-- `/about` の問い合わせ先は「メール + X + QR」の 2 系統を維持し、リンク先と画像ファイル名の整合性を確保する。
+- `/about` の問い合わせ先は「メール + X + Facebook + GitHub + QR」を維持し、リンク先と画像ファイル名の整合性を確保する。
+- `vite.config.ts` で `base` を `VITE_ROOT_DIR` にしているため、ルーティングや静的アセット参照時は必ず同変数を通す。

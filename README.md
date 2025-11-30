@@ -7,20 +7,20 @@ React + TypeScript + Vite で構築し、**関数ヘッダ/主要処理のコメ
 
 ## ✅ 主な機能
 
-- `data/bears.geojson` から出没データを読み込み、**MapLibre GL** 上にカスタム画像のマーカーをプロット
-- マーカーをクリック/Enter/Space で **詳細モーダル** を開き、日時・場所・状況・使用アイコンをテーブル表示
+- `data/bears.geojson` をフェッチし、**MapLibre GL** 上に `public/icon/*.svg` のカスタムマーカーを表示（未定義アイコンは `bear.svg` へフォールバック）
+- マーカーをクリック/Enter/Space で **詳細モーダル** を開き、日時・場所・状況・アイコンを表示
 - フローティングの **フィルタボタン（`icon/filter.svg`）** からモーダルを開き、**年（2017〜2025）/ 月（1〜12）/ アイコン種別** の AND 条件で絞り込み  
-  （未指定の条件はワイルドカード扱い）
-- ヘッダ左上の 3 点メニュー（`HeaderMenu`）から **「このサイトについて」ページ** へ遷移できる簡易ルーティングを実装
-- About ページでは、機能概要・アイコンの意味・データ出典・利用方法に加えて、**メール / X（旧 Twitter）のリンクと QR コード付き問い合わせ先** を掲載
-- フッターに OpenStreetMap / CC BY 4.0（札幌市オープンデータ）のクレジットとリンクを常時表示
+  ヘッダの「フィルタ解除」またはモーダル内「クリア」で全件表示へ戻す
+- ヘッダ左上の 3 点メニュー（`HeaderMenu`）から **「このサイトについて」ページ** へ pushState ベースで遷移（`VITE_ROOT_DIR` を base として考慮）
+- About ページでは機能概要・アイコンの優先順位・データ出典・使い方に加えて、**メール / X / Facebook / GitHub のリンクと QR コード付き問い合わせ先** を掲載
+- フッターに OpenStreetMap / CC BY 4.0（札幌市オープンデータ）のクレジットを常時表示し、データ取得中/失敗時はステータスバッジで通知
 
 ---
 
 ## 🧰 技術スタック
 
 - React 18 + TypeScript
-- Vite 5（`VITE_ROOT_DIR` を base URL として利用）
+- Vite 5（`VITE_ROOT_DIR` を base URL として使用）
 - MapLibre GL JS（`maplibre-gl`）
 - ESLint（typescript-eslint） + Prettier
 - gh-pages（`npm run deploy` で GitHub Pages へ配信可能）
@@ -31,6 +31,7 @@ React + TypeScript + Vite で構築し、**関数ヘッダ/主要処理のコメ
 
 ```
 .
+├─ index.html                  # Vite エントリ（GTAG の読み込み含む）
 ├─ public/
 │  ├─ icon/
 │  │  ├─ bear.svg / like-bear.svg / excrement.svg / footprint.svg
@@ -38,20 +39,21 @@ React + TypeScript + Vite で構築し、**関数ヘッダ/主要処理のコメ
 │  │  └─ ...（MapLibre マーカーや UI ボタン用）
 │  └─ qr/
 │     ├─ qr_sqare_mail_nifty.png
-│     └─ qr_sqare_x_murakami77mm.png
-├─ data/
-│  └─ bears.geojson          # 札幌市オープンデータを加工した GeoJSON
+│     ├─ qr_sqare_x_murakami77mm.png
+│     ├─ qr_sqare_facebook_masashi0923.png
+│     └─ qr_sqare_github_murakami0923.png
+├─ data/                       # Git 管理外。bears.geojson を配置する
 ├─ src/
 │  ├─ app/
-│  │  ├─ App.tsx             # ルーティングとフッター
+│  │  ├─ App.tsx               # 簡易ルーティングとフッター
 │  │  └─ main.tsx
 │  ├─ components/
 │  │  ├─ MapView.tsx / BearMarker.tsx / FilterButton.tsx
 │  │  ├─ FilterModal.tsx / DetailsModal.tsx
-│  │  ├─ HeaderMenu.tsx      # 3 点メニュー
-│  │  └─ AboutPage.tsx       # お問い合わせ情報付き
+│  │  ├─ HeaderMenu.tsx        # 3 点メニュー
+│  │  └─ AboutPage.tsx         # お問い合わせ情報付き
 │  ├─ hooks/ (useBearData.ts)
-│  ├─ lib/ (geojson.ts)      # フィルタ・バリデーション
+│  ├─ lib/ (geojson.ts)        # バリデーションとフィルタ
 │  ├─ styles/ (index.css)
 │  └─ types/ (bears.d.ts)
 ├─ AGENTS.md / README.md
@@ -67,11 +69,11 @@ React + TypeScript + Vite で構築し、**関数ヘッダ/主要処理のコメ
    npm install
    ```
 2. 必須アセットを配置
-   - `data/bears.geojson`
-   - `public/icon/*.svg`（マーカー/フィルタ/メニュー）
-   - `public/qr/*.png`（問い合わせ QR。デフォルトでは `qr_sqare_mail_nifty.png` と `qr_sqare_x_murakami77mm.png` を使用）
+   - `data/bears.geojson`（リポジトリ外で用意）
+   - `public/icon/*.svg`（マーカー/フィルタ/メニュー用）
+   - `public/qr/*.png`（メール/X/Facebook/GitHub の各 QR コード）
 3. `.env` などで `VITE_ROOT_DIR` を設定  
-   GitHub Pages で `/bear-map-web-sapporo/` などサブディレクトリ公開する場合は、そのパスを指定します。ローカル開発は `/` が推奨です。
+   GitHub Pages で `/bear-map-web-sapporo/` などサブディレクトリ公開する場合は、そのパスを指定。ローカル開発は `/` 推奨。
 
 開発サーバは `npm run dev`、本番ビルドは `npm run build`、プレビューは `npm run preview` です。
 
@@ -101,9 +103,9 @@ React + TypeScript + Vite で構築し、**関数ヘッダ/主要処理のコメ
 ```
 
 - `coordinates` は `[longitude, latitude]`
-- `year`: 2017〜2025 / `month`: 1〜12（`lib/geojson.ts` でバリデーション）
-- `icon`: `public/icon/` 配下のファイル名（`bear.svg`, `like-bear.svg`, `excrement.svg`, `footprint.svg`, `camera.svg`, `voice.svg`, `other.svg` のいずれか）
-- その他の `properties` はモーダル表示時にテーブル化されるため、`datetime`, `location`, `status` などの文字列を推奨
+- `year`: 2017〜2025 / `month`: 1〜12（`lib/geojson.ts` でバリデーション。欠落行は除外）
+- `icon`: `public/icon/` 配下のファイル名（`bear.svg`, `like-bear.svg`, `excrement.svg`, `footprint.svg`, `camera.svg`, `voice.svg`, `other.svg` のいずれか。無効値はフォールバック）
+- `datetime`, `location`, `status` などの追加フィールドは詳細モーダルでテーブル表示されます
 
 `useBearData` フックでフェッチ・正規化後、`filterFeatures` が AND 条件で抽出します。
 
@@ -112,9 +114,9 @@ React + TypeScript + Vite で構築し、**関数ヘッダ/主要処理のコメ
 ## 🔎 フィルタ仕様
 
 - 条件：`year`, `month`, `icon`
-- `FilterModal` で選択した値のみが `BearFilter` に渡り、未入力はフィールドごとに削除される
-- `BearMarker` は `properties.icon` を参照して各種アイコンを描画
-- リセットボタン（ヘッダ右の「フィルタ解除」またはモーダル内「クリア」）で全件表示に戻す
+- `FilterModal` で選択した値のみが `BearFilter` に渡り、未入力はフィールドごとに削除（ワイルドカード扱い）
+- `BearMarker` は `properties.icon` をサニタイズして描画。未定義/空文字は `bear.svg`
+- ヘッダ右の「フィルタ解除」またはモーダル内「クリア」で全件表示に戻す
 
 ---
 
@@ -134,11 +136,11 @@ JavaScript 生成物を掃除するユーティリティとして `npm run ls-js
 
 ## 🧪 テスト観点
 
-- `useBearData`：HTTP エラーや壊れた GeoJSON を検知し、UI にエラーバッジを表示できるか
+- `useBearData`：HTTP エラーや壊れた GeoJSON を検知し、ローディング/エラーのステータスバッジを表示できるか
 - フィルタ：全件／年のみ／年月／年月＋アイコンなど、未指定をワイルドカード扱いにできているか
 - モーダル：フォーカストラップ、ESC で閉じる、キーボード操作でのマーカー選択
-- ルーティング：`/` ↔ `/about` を pushState で遷移し、リロードや戻る操作でも表示が維持されるか
-- About ページ：メール・X のリンクと QR コード（`public/qr`）が崩れず表示されるか
+- ルーティング：`/` ↔ `/about` を pushState で遷移し、`VITE_ROOT_DIR` 付きでもリロードや戻る操作で表示が維持されるか
+- About ページ：メール/X/Facebook/GitHub のリンクと QR コード（`public/qr`）が崩れず表示されるか
 
 ---
 
