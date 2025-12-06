@@ -353,6 +353,26 @@ main {
   margin-bottom: 0;
 }
 
+.about-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.5rem 0 0;
+}
+
+.about-table th,
+.about-table td {
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.about-table th {
+  width: 28%;
+  color: #475569;
+  font-weight: 700;
+  background-color: #f8fafc;
+}
+
 .app-footer {
   /* text-align: center; */
   padding: 1rem 0.5rem;

@@ -40,6 +40,29 @@ const AboutPage = ({ onNavigateHome }: AboutPageProps): JSX.Element => {
         </button>
       </div>
 
+      {/* 更新履歴の提示（最新情報を上部に配置） */}
+      <div className="about-card">
+        <h2>更新履歴</h2>
+        <table className="about-table" aria-label="更新履歴">
+          <thead>
+            <tr>
+              <th scope="col">日付</th>
+              <th scope="col">更新内容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2025/12/06</td>
+              <td>12月5日に公開された熊出没情報を反映</td>
+            </tr>
+            <tr>
+              <td>2025/11/23</td>
+              <td>サイトを公開</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       {/* 主な機能を説明するセクション */}
       <div className="about-card">
         <h2>主な機能</h2>
