@@ -34,7 +34,8 @@ const MapView = ({ onNavigateAbout }) => {
                 sources: {
                     osm: {
                         type: 'raster',
-                        tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
+                        // tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
+                        tiles: ['https://murakami0923-map-tiles.s3.ap-northeast-1.amazonaws.com/png/{z}/{x}/{y}.png'],
                         tileSize: 256,
                         attribution: '© <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
                     },
@@ -48,7 +49,10 @@ const MapView = ({ onNavigateAbout }) => {
                 ],
             },
             center: SAPPORO_COORDINATES,
-            zoom: 11,
+            // 初期ズームと許容ズーム範囲を指定し、11 以下へ引けないようにする
+            zoom: 12,
+            minZoom: 12,
+            maxZoom: 19,
         });
         map.addControl(new NavigationControl(), 'top-right');
         mapRef.current = map;
