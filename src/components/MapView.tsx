@@ -58,7 +58,10 @@ const MapView = ({ onNavigateAbout }: MapViewProps): JSX.Element => {
         ],
       },
       center: SAPPORO_COORDINATES,
-      zoom: 11,
+      // 初期ズームと許容ズーム範囲を指定し、11 以下へ引けないようにする
+      zoom: 12,
+      minZoom: 12,
+      maxZoom: 19,
     });
 
     map.addControl(new NavigationControl(), 'top-right');
