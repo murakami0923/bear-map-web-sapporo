@@ -43,7 +43,8 @@ const MapView = ({ onNavigateAbout }: MapViewProps): JSX.Element => {
         sources: {
           osm: {
             type: 'raster',
-            tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
+            // tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
+            tiles: ['https://murakami0923-map-tiles.s3.ap-northeast-1.amazonaws.com/png/{z}/{x}/{y}.png'],
             tileSize: 256,
             attribution: '© <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
           },
