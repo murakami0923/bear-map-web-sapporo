@@ -248,6 +248,10 @@ main {
   margin-top: 0.25rem;
 }
 
+.checkbox-group.years {
+  grid-template-columns: repeat(4, 1fr);
+}
+
 .checkbox-group.icons {
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
 }

@@ -139,7 +139,7 @@ const FilterModal = ({
         <form className="modal-form" onSubmit={handleSubmit}>
           <fieldset className="filter-fieldset">
             <legend>年</legend>
-            <div className="checkbox-group">
+            <div className="checkbox-group years">
               {years.map((value, idx) => (
                 <label key={`year-${value}`} className="checkbox-label">
                   <input
@@ -148,7 +148,7 @@ const FilterModal = ({
                     checked={selectedYears.includes(value)}
                     onChange={() => setSelectedYears((prev) => toggleValue(prev, value))}
                   />
-                  {value}
+                  {value}年
                 </label>
               ))}
             </div>
@@ -164,7 +164,7 @@ const FilterModal = ({
                     checked={selectedMonths.includes(value)}
                     onChange={() => setSelectedMonths((prev) => toggleValue(prev, value))}
                   />
-                  {value}
+                  {value}月
                 </label>
               ))}
             </div>
