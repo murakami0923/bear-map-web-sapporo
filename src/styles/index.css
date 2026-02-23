@@ -227,6 +227,52 @@ main {
   font-size: 1rem;
 }
 
+.filter-fieldset {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin: 0;
+}
+
+.filter-fieldset legend {
+  padding: 0 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.checkbox-group.years {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.checkbox-group.icons {
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+}
+
+.checkbox-label {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 400 !important;
+  font-size: 0.9rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
 .modal-actions {
   display: flex;
   justify-content: flex-end;
@@ -366,8 +412,20 @@ main {
   border-bottom: 1px solid #e2e8f0;
 }
 
+/* 1列目（日付）の幅を固定 */
+.about-table th:first-child,
+.about-table td:first-child {
+  width: 120px;
+  min-width: 120px;
+}
+
+/* 2列目（更新内容）の幅を自動調整 */
+.about-table th:nth-child(2),
+.about-table td:nth-child(2) {
+  width: auto;
+}
+
 .about-table th {
-  width: 28%;
   color: #475569;
   font-weight: 700;
   background-color: #f8fafc;

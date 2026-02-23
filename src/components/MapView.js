@@ -121,9 +121,9 @@ const MapView = ({ onNavigateAbout }) => {
     const map = mapRef.current;
     const markerLayerKey = useMemo(() => {
         return JSON.stringify({
-            year: filter.year ?? 'all',
-            month: filter.month ?? 'all',
-            icon: filter.icon ?? 'all',
+            years: (filter.years ?? []).slice().sort().join(','),
+            months: (filter.months ?? []).slice().sort().join(','),
+            icons: (filter.icons ?? []).slice().sort().join(','),
         });
     }, [filter]);
     const markers = useMemo(() => {
