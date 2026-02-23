@@ -52,16 +52,16 @@ const AboutPage = ({ onNavigateHome }: AboutPageProps): JSX.Element => {
           </thead>
           <tbody>
             <tr>
+              <td>2026/02/23</td>
+              <td>フィルタのモーダルで、各項目をチェックボックスにして複数の条件を指定できるように変更</td>
+            </tr>
+            <tr>
               <td>2025/12/06</td>
               <td>12月5日に公開された熊出没情報を反映</td>
             </tr>
             <tr>
               <td>2025/11/23</td>
               <td>サイトを公開</td>
-            </tr>
-            <tr>
-              <td>2026/02/23</td>
-              <td>フィルタのモーダルで、各項目をチェックボックスにして複数の条件を指定できるように変更</td>
             </tr>
           </tbody>
         </table>
