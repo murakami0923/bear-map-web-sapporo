@@ -412,8 +412,20 @@ main {
   border-bottom: 1px solid #e2e8f0;
 }
 
+/* 1列目（日付）の幅を固定 */
+.about-table th:first-child,
+.about-table td:first-child {
+  width: 120px;
+  min-width: 120px;
+}
+
+/* 2列目（更新内容）の幅を自動調整 */
+.about-table th:nth-child(2),
+.about-table td:nth-child(2) {
+  width: auto;
+}
+
 .about-table th {
-  width: 28%;
   color: #475569;
   font-weight: 700;
   background-color: #f8fafc;
