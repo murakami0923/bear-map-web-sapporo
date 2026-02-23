@@ -14,7 +14,7 @@ const iconFilterOptions: { label: string; filename: BearIconName }[] = [
 ];
 
 /**
- * 年・月・アイコンによる絞り込み条件を入力するモーダルを表示する。
+ * 年・月・アイコンによる絞り込み条件（複数選択）を入力するモーダルを表示する。
  *
  * @param {{ isOpen: boolean; defaultFilter: BearFilter; onApply: (filter: BearFilter) => void; onClose: () => void; onReset: () => void }} props モーダルの開閉状態とイベントハンドラ群
  * @returns {JSX.Element | null} モーダルの JSX。非表示の場合は null
@@ -32,18 +32,18 @@ const FilterModal = ({
   onClose: () => void;
   onReset: () => void;
 }): JSX.Element | null => {
-  const [year, setYear] = useState<number | ''>(defaultFilter.year ?? '');
-  const [month, setMonth] = useState<number | ''>(defaultFilter.month ?? '');
-  const [icon, setIcon] = useState<BearIconName | ''>(defaultFilter.icon ?? '');
+  const [selectedYears, setSelectedYears] = useState<number[]>(defaultFilter.years ?? []);
+  const [selectedMonths, setSelectedMonths] = useState<number[]>(defaultFilter.months ?? []);
+  const [selectedIcons, setSelectedIcons] = useState<BearIconName[]>(defaultFilter.icons ?? []);
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const firstFieldRef = useRef<HTMLSelectElement | null>(null);
+  const firstCheckboxRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     // モーダルが開いたタイミングでフォーム値を最新フィルタへ合わせる
     if (isOpen) {
-      setYear(defaultFilter.year ?? '');
-      setMonth(defaultFilter.month ?? '');
-      setIcon(defaultFilter.icon ?? '');
+      setSelectedYears(defaultFilter.years ?? []);
+      setSelectedMonths(defaultFilter.months ?? []);
+      setSelectedIcons(defaultFilter.icons ?? []);
     }
   }, [defaultFilter, isOpen]);
 
@@ -52,8 +52,8 @@ const FilterModal = ({
       return;
     }
 
-    // 最初の入力欄にフォーカスを移動して操作しやすくする
-    firstFieldRef.current?.focus();
+    // 最初の入力欄（チェックボックス）にフォーカスを移動して操作しやすくする
+    firstCheckboxRef.current?.focus();
 
     const handleKeyDown = (event: KeyboardEvent) => {
       // ESC キーでモーダルを閉じる
@@ -96,20 +96,31 @@ const FilterModal = ({
     // フォームのデフォルト送信を抑止し、親へ条件を通知する
     event.preventDefault();
     const payload: BearFilter = {
-      year: typeof year === 'number' ? year : undefined,
-      month: typeof month === 'number' ? month : undefined,
-      icon: icon || undefined,
+      years: selectedYears.length > 0 ? selectedYears : undefined,
+      months: selectedMonths.length > 0 ? selectedMonths : undefined,
+      icons: selectedIcons.length > 0 ? selectedIcons : undefined,
     };
     onApply(payload);
     onClose();
   };
 
   const handleReset = () => {
-    // 全項目をリセットしてワイルドカード状態に戻す
-    setYear('');
-    setMonth('');
-    setIcon('');
+    // 全選択を解除してワイルドカード状態に戻す
+    setSelectedYears([]);
+    setSelectedMonths([]);
+    setSelectedIcons([]);
     onReset();
+  };
+
+  /**
+   * 配列内の値をトグル（追加または削除）する。
+   *
+   * @param {T[]} current 現在の配列
+   * @param {T} value 対象の値
+   * @returns {T[]} 更新後の配列
+   */
+  const toggleValue = <T,>(current: T[], value: T): T[] => {
+    return current.includes(value) ? current.filter((v) => v !== value) : [...current, value];
   };
 
   if (!isOpen) {
@@ -126,52 +137,55 @@ const FilterModal = ({
           </button>
         </header>
         <form className="modal-form" onSubmit={handleSubmit}>
-          <label>
-            年
-            <select
-              ref={firstFieldRef}
-              value={year}
-              onChange={(event) => setYear(event.target.value ? Number(event.target.value) : '')}
-            >
-              <option value="">すべて</option>
-              {years.map((value) => (
-                <option key={`year-${value}`} value={value}>
-                  {value}
-                </option>
+          <fieldset className="filter-fieldset">
+            <legend>年</legend>
+            <div className="checkbox-group years">
+              {years.map((value, idx) => (
+                <label key={`year-${value}`} className="checkbox-label">
+                  <input
+                    type="checkbox"
+                    ref={idx === 0 ? firstCheckboxRef : undefined}
+                    checked={selectedYears.includes(value)}
+                    onChange={() => setSelectedYears((prev) => toggleValue(prev, value))}
+                  />
+                  {value}年
+                </label>
               ))}
-            </select>
-          </label>
-          <label>
-            月
-            <select
-              value={month}
-              onChange={(event) => setMonth(event.target.value ? Number(event.target.value) : '')}
-            >
-              <option value="">すべて</option>
+            </div>
+          </fieldset>
+
+          <fieldset className="filter-fieldset">
+            <legend>月</legend>
+            <div className="checkbox-group">
               {months.map((value) => (
-                <option key={`month-${value}`} value={value}>
-                  {value}
-                </option>
+                <label key={`month-${value}`} className="checkbox-label">
+                  <input
+                    type="checkbox"
+                    checked={selectedMonths.includes(value)}
+                    onChange={() => setSelectedMonths((prev) => toggleValue(prev, value))}
+                  />
+                  {value}月
+                </label>
               ))}
-            </select>
-          </label>
-          <label>
-            アイコン
-            <select
-              value={icon}
-              onChange={(event) => {
-                const value = event.target.value as BearIconName | '';
-                setIcon(value === '' ? '' : value);
-              }}
-            >
-              <option value="">すべて</option>
+            </div>
+          </fieldset>
+
+          <fieldset className="filter-fieldset">
+            <legend>アイコン</legend>
+            <div className="checkbox-group icons">
               {iconFilterOptions.map(({ label, filename }) => (
-                <option key={`icon-${filename}`} value={filename}>
+                <label key={`icon-${filename}`} className="checkbox-label">
+                  <input
+                    type="checkbox"
+                    checked={selectedIcons.includes(filename)}
+                    onChange={() => setSelectedIcons((prev) => toggleValue(prev, filename))}
+                  />
                   {label}
-                </option>
+                </label>
               ))}
-            </select>
-          </label>
+            </div>
+          </fieldset>
+
           <div className="modal-actions">
             <button type="button" onClick={handleReset} className="secondary-button">
               クリア

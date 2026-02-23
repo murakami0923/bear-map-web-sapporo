@@ -56,11 +56,12 @@ export const useBearData = () => {
      * @param {BearFilter} partial 設定したい部分的なフィルタ
      */
     const updateFilter = useCallback((partial) => {
-        // undefined が指定された項目は削除し、条件を上書きする
+        // undefined または空配列が指定された項目は削除し、条件を上書きする
         setFilterState((prev) => {
             const next = { ...prev, ...partial };
             Object.entries(next).forEach(([key, value]) => {
-                if (value === undefined || value === null || value === '') {
+                const isArray = Array.isArray(value);
+                if (value === undefined || value === null || value === '' || (isArray && value.length === 0)) {
                     delete next[key];
                 }
             });

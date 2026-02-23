@@ -21,9 +21,9 @@ export interface BearFeatureCollection {
 }
 
 export interface BearFilter {
-  year?: number;
-  month?: number;
-  icon?: BearIconName;
+  years?: number[];
+  months?: number[];
+  icons?: BearIconName[];
 }
 
 export type BearIconName =
