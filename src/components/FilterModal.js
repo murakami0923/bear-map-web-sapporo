@@ -12,31 +12,31 @@ const iconFilterOptions = [
     { label: 'その他', filename: 'other.svg' },
 ];
 /**
- * 年・月・アイコンによる絞り込み条件を入力するモーダルを表示する。
+ * 年・月・アイコンによる絞り込み条件（複数選択）を入力するモーダルを表示する。
  *
  * @param {{ isOpen: boolean; defaultFilter: BearFilter; onApply: (filter: BearFilter) => void; onClose: () => void; onReset: () => void }} props モーダルの開閉状態とイベントハンドラ群
  * @returns {JSX.Element | null} モーダルの JSX。非表示の場合は null
  */
 const FilterModal = ({ isOpen, defaultFilter, onApply, onClose, onReset, }) => {
-    const [year, setYear] = useState(defaultFilter.year ?? '');
-    const [month, setMonth] = useState(defaultFilter.month ?? '');
-    const [icon, setIcon] = useState(defaultFilter.icon ?? '');
+    const [selectedYears, setSelectedYears] = useState(defaultFilter.years ?? []);
+    const [selectedMonths, setSelectedMonths] = useState(defaultFilter.months ?? []);
+    const [selectedIcons, setSelectedIcons] = useState(defaultFilter.icons ?? []);
     const containerRef = useRef(null);
-    const firstFieldRef = useRef(null);
+    const firstCheckboxRef = useRef(null);
     useEffect(() => {
         // モーダルが開いたタイミングでフォーム値を最新フィルタへ合わせる
         if (isOpen) {
-            setYear(defaultFilter.year ?? '');
-            setMonth(defaultFilter.month ?? '');
-            setIcon(defaultFilter.icon ?? '');
+            setSelectedYears(defaultFilter.years ?? []);
+            setSelectedMonths(defaultFilter.months ?? []);
+            setSelectedIcons(defaultFilter.icons ?? []);
         }
     }, [defaultFilter, isOpen]);
     useEffect(() => {
         if (!isOpen) {
             return;
         }
-        // 最初の入力欄にフォーカスを移動して操作しやすくする
-        firstFieldRef.current?.focus();
+        // 最初の入力欄（チェックボックス）にフォーカスを移動して操作しやすくする
+        firstCheckboxRef.current?.focus();
         const handleKeyDown = (event) => {
             // ESC キーでモーダルを閉じる
             if (event.key === 'Escape') {
@@ -72,26 +72,33 @@ const FilterModal = ({ isOpen, defaultFilter, onApply, onClose, onReset, }) => {
         // フォームのデフォルト送信を抑止し、親へ条件を通知する
         event.preventDefault();
         const payload = {
-            year: typeof year === 'number' ? year : undefined,
-            month: typeof month === 'number' ? month : undefined,
-            icon: icon || undefined,
+            years: selectedYears.length > 0 ? selectedYears : undefined,
+            months: selectedMonths.length > 0 ? selectedMonths : undefined,
+            icons: selectedIcons.length > 0 ? selectedIcons : undefined,
         };
         onApply(payload);
         onClose();
     };
     const handleReset = () => {
-        // 全項目をリセットしてワイルドカード状態に戻す
-        setYear('');
-        setMonth('');
-        setIcon('');
+        // 全選択を解除してワイルドカード状態に戻す
+        setSelectedYears([]);
+        setSelectedMonths([]);
+        setSelectedIcons([]);
         onReset();
+    };
+    /**
+     * 配列内の値をトグル（追加または削除）する。
+     *
+     * @param {T[]} current 現在の配列
+     * @param {T} value 対象の値
+     * @returns {T[]} 更新後の配列
+     */
+    const toggleValue = (current, value) => {
+        return current.includes(value) ? current.filter((v) => v !== value) : [...current, value];
     };
     if (!isOpen) {
         return null;
     }
-    return (_jsx("div", { className: "modal-backdrop", role: "dialog", "aria-modal": "true", children: _jsxs("div", { className: "modal-content", ref: containerRef, children: [_jsxs("header", { className: "modal-header", children: [_jsx("h2", { children: "\u691C\u7D22\u6761\u4EF6" }), _jsx("button", { type: "button", className: "modal-close", onClick: onClose, "aria-label": "\u9589\u3058\u308B", children: "\u00D7" })] }), _jsxs("form", { className: "modal-form", onSubmit: handleSubmit, children: [_jsxs("label", { children: ["\u5E74", _jsxs("select", { ref: firstFieldRef, value: year, onChange: (event) => setYear(event.target.value ? Number(event.target.value) : ''), children: [_jsx("option", { value: "", children: "\u3059\u3079\u3066" }), years.map((value) => (_jsx("option", { value: value, children: value }, `year-${value}`)))] })] }), _jsxs("label", { children: ["\u6708", _jsxs("select", { value: month, onChange: (event) => setMonth(event.target.value ? Number(event.target.value) : ''), children: [_jsx("option", { value: "", children: "\u3059\u3079\u3066" }), months.map((value) => (_jsx("option", { value: value, children: value }, `month-${value}`)))] })] }), _jsxs("label", { children: ["\u30A2\u30A4\u30B3\u30F3", _jsxs("select", { value: icon, onChange: (event) => {
-                                        const value = event.target.value;
-                                        setIcon(value === '' ? '' : value);
-                                    }, children: [_jsx("option", { value: "", children: "\u3059\u3079\u3066" }), iconFilterOptions.map(({ label, filename }) => (_jsx("option", { value: filename, children: label }, `icon-${filename}`)))] })] }), _jsxs("div", { className: "modal-actions", children: [_jsx("button", { type: "button", onClick: handleReset, className: "secondary-button", children: "\u30AF\u30EA\u30A2" }), _jsx("button", { type: "submit", className: "primary-button", children: "\u7D5E\u308A\u8FBC\u3080" })] })] })] }) }));
+    return (_jsx("div", { className: "modal-backdrop", role: "dialog", "aria-modal": "true", children: _jsxs("div", { className: "modal-content", ref: containerRef, children: [_jsxs("header", { className: "modal-header", children: [_jsx("h2", { children: "\u691C\u7D22\u6761\u4EF6" }), _jsx("button", { type: "button", className: "modal-close", onClick: onClose, "aria-label": "\u9589\u3058\u308B", children: "\u00D7" })] }), _jsxs("form", { className: "modal-form", onSubmit: handleSubmit, children: [_jsxs("fieldset", { className: "filter-fieldset", children: [_jsx("legend", { children: "\u5E74" }), _jsx("div", { className: "checkbox-group", children: years.map((value, idx) => (_jsxs("label", { className: "checkbox-label", children: [_jsx("input", { type: "checkbox", ref: idx === 0 ? firstCheckboxRef : undefined, checked: selectedYears.includes(value), onChange: () => setSelectedYears((prev) => toggleValue(prev, value)) }), value] }, `year-${value}`))) })] }), _jsxs("fieldset", { className: "filter-fieldset", children: [_jsx("legend", { children: "\u6708" }), _jsx("div", { className: "checkbox-group", children: months.map((value) => (_jsxs("label", { className: "checkbox-label", children: [_jsx("input", { type: "checkbox", checked: selectedMonths.includes(value), onChange: () => setSelectedMonths((prev) => toggleValue(prev, value)) }), value] }, `month-${value}`))) })] }), _jsxs("fieldset", { className: "filter-fieldset", children: [_jsx("legend", { children: "\u30A2\u30A4\u30B3\u30F3" }), _jsx("div", { className: "checkbox-group icons", children: iconFilterOptions.map(({ label, filename }) => (_jsxs("label", { className: "checkbox-label", children: [_jsx("input", { type: "checkbox", checked: selectedIcons.includes(filename), onChange: () => setSelectedIcons((prev) => toggleValue(prev, filename)) }), label] }, `icon-${filename}`))) })] }), _jsxs("div", { className: "modal-actions", children: [_jsx("button", { type: "button", onClick: handleReset, className: "secondary-button", children: "\u30AF\u30EA\u30A2" }), _jsx("button", { type: "submit", className: "primary-button", children: "\u7D5E\u308A\u8FBC\u3080" })] })] })] }) }));
 };
 export default FilterModal;

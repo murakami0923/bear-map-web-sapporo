@@ -126,17 +126,22 @@ export const parseFeatureCollection = (json) => {
  * @returns {BearFeature[]} フィルタリング後の Feature 配列
  */
 export const filterFeatures = (features, filter) => {
-    // 条件の AND 結合で絞り込み、未指定項目はワイルドカード扱いとする
+    // 条件の AND 結合で絞り込み、未指定（空配列）項目はワイルドカード扱いとする
     return features.filter((feature) => {
         const { year, month, icon } = feature.properties;
-        if (filter.year && year !== filter.year) {
+        // 年フィルタ: 配列に含まれる場合のみ通過（未指定は全通過）
+        if (filter.years && filter.years.length > 0 && !filter.years.includes(year)) {
             return false;
         }
-        if (filter.month && month !== filter.month) {
+        // 月フィルタ: 配列に含まれる場合のみ通過（未指定は全通過）
+        if (filter.months && filter.months.length > 0 && !filter.months.includes(month)) {
             return false;
         }
-        if (filter.icon && icon !== filter.icon) {
-            return false;
+        // アイコンフィルタ: 配列に含まれる場合のみ通過（未指定は全通過）
+        if (filter.icons && filter.icons.length > 0) {
+            if (!icon || !filter.icons.includes(icon)) {
+                return false;
+            }
         }
         return true;
     });
