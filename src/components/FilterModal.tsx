@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import type { BearFilter, BearIconName } from '../types/bears';
 
-const years = Array.from({ length: 2025 - 2017 + 1 }, (_, index) => 2017 + index);
+const years = Array.from({ length: 2026 - 2017 + 1 }, (_, index) => 2017 + index);
 const months = Array.from({ length: 12 }, (_, index) => index + 1);
 const iconFilterOptions: { label: string; filename: BearIconName }[] = [
   { label: 'ヒグマ', filename: 'bear.svg' },
