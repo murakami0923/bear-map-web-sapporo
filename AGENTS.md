@@ -10,7 +10,7 @@
 - `data/bears.geojson`（開発者設置）を `VITE_ROOT_DIR` 起点でフェッチし、`properties.icon` に応じて **public/icon/** 配下の SVG を MapLibre GL のマーカーとして表示します（無効値は `bear.svg` にフォールバック）。
 - マーカーのクリック/タップ/Enter/Space で **DetailsModal** を表示し、GeoJSON の `properties`（日時・場所・状況など）を整形して見やすく表示します。
 - 左上に **フィルタアイコン（icon/filter.svg）** を配置し、クリックで **検索条件入力モーダル** を表示します。
-  - 検索条件：年（2017〜2025）、月（1〜12）、アイコン（`bear.svg` / `like-bear.svg` / `excrement.svg` / `footprint.svg` / `camera.svg` / `voice.svg` / `other.svg`）
+  - 検索条件：年（2017〜2026）、月（1〜12）、アイコン（`bear.svg` / `like-bear.svg` / `excrement.svg` / `footprint.svg` / `camera.svg` / `voice.svg` / `other.svg`）
   - 「絞り込む」で AND 条件フィルタ、モーダル内「クリア」またはヘッダの「フィルタ解除」で全件表示に戻す。
 - ヘッダ左上に **メニューアイコン（icon/menu.svg）** を配置し、クリックで `/about` への遷移手段（`HeaderMenu`）を提供します（`VITE_ROOT_DIR` を考慮した pushState）。
 - `/about` ではサイトの目的・機能・アイコンの優先順位・データ出典・更新履歴（表形式）・使い方および **お問い合わせ先（メール / X / Facebook / GitHub 各リンク + QR）** を掲載し、「マップへ戻る」導線を置きます。更新履歴は日付と更新内容の 2 列で最新順を想定。
@@ -79,7 +79,7 @@
 
 ### 4.1 GeoJSON（Point のみ想定）
 - `FeatureCollection` / `Feature<Point>` 構造。
-- `properties` は少なくとも `year` と `month`（年=2017〜2025、月=1〜12）が必須。範囲外または欠落 Feature は読み込み段階で除外。
+- `properties` は少なくとも `year` と `month`（年=2017〜2026、月=1〜12）が必須。範囲外または欠落 Feature は読み込み段階で除外。
 - `icon` は `bear.svg` / `like-bear.svg` / `excrement.svg` / `footprint.svg` / `camera.svg` / `voice.svg` / `other.svg` のみ受理。無効値は `BearMarker` 側で `bear.svg` にフォールバック。
 - `datetime`, `location`, `status`, `id` など任意の詳細は DetailsModal でテーブル表示（存在するもののみ）。
 - 座標は `[longitude, latitude]` の配列で、`type: Point` 以外は無視する。

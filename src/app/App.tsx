@@ -173,7 +173,7 @@ const App = (): JSX.Element => {
         </p>
         <p>
           このサイトの著作権について：<br/>
-          &copy; 2025 Masashi Murakami (村上 將志).
+          &copy; 2026 Masashi Murakami (村上 將志).
         </p>
       </footer>
     </div>
