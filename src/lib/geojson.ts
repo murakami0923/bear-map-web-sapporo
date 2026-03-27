@@ -33,11 +33,11 @@ export const normalizeIconName = (iconName: unknown): BearIconName | undefined =
  * 指定された年が許容範囲内かを検証する。
  *
  * @param {unknown} year チェック対象の値
- * @returns {year is number} 2017〜2025 の範囲内なら true
+ * @returns {year is number} 2017〜2026 の範囲内なら true
  */
 export const isValidYear = (year: unknown): year is number => {
-  // 数値かつ整数で 2017〜2025 の範囲を満たすかどうか
-  return typeof year === 'number' && Number.isInteger(year) && year >= 2017 && year <= 2025;
+  // 数値かつ整数で 2017〜2026 の範囲を満たすかどうか
+  return typeof year === 'number' && Number.isInteger(year) && year >= 2017 && year <= 2026;
 };
 
 /**

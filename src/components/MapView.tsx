@@ -176,7 +176,7 @@ const MapView = ({ onNavigateAbout }: MapViewProps): JSX.Element => {
       <div className="map-header">
         <div className="map-header-left">
           <HeaderMenu isOpen={isMenuOpen} onToggle={handleToggleMenu} onNavigateToAbout={handleNavigateAbout} />
-          <h1>熊出没マップ 北海道札幌市 2017年～2025年</h1>
+          <h1>熊出没マップ 北海道札幌市 2017年～2026年</h1>
         </div>
         <button type="button" className="secondary-button" onClick={handleResetFilter}>
           フィルタ解除
