@@ -114,8 +114,9 @@ const AboutPage = ({ onNavigateHome }: AboutPageProps): JSX.Element => {
       <div className="about-card">
         <h2>データの出典について</h2>
         <p>
-          札幌市オープンデータ『札幌市内のヒグマ出没情報』を加工した GeoJSON を使用しています。<br/>
-          原データは CC BY 4.0 ライセンスで公開されております。
+          札幌市オープンデータ<a target="_blank" href="https://ckan.pf-sapporo.jp/dataset/sapporo_bear_appearance">『札幌市内のヒグマ出没情報』</a>から取得したCSVデータをもとに、GeoJSON形式に加工して使用しています。<br/>
+          元のデータは CC BY 4.0 ライセンスで公開されております。<br/><br/>
+          なお、オープンデータのサイトでは2025年11月までのデータで更新が止まっており、2025年12月以降のデータが公開されていませんので、<a target="_blank" href="https://www.city.sapporo.jp/kurashi/animal/choju/kuma/syutsubotsu/">札幌市ヒグマ出没情報</a>のサイトで公開されている情報をもとに、本サイト用にデータを追加・加工しています。
         </p>
       </div>
 
