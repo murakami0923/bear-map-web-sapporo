@@ -33264,6 +33264,132 @@
         "status": "ヒグマを目撃",
         "icon": "bear.svg"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.4204,
+          43.0051
+        ]
+      },
+      "properties": {
+        "id": "1585",
+        "datetime": "2026年05月25日 21:06",
+        "year": 2026,
+        "month": 5,
+        "hour": 21,
+        "award": "豊平区",
+        "location": "豊平区羊ケ丘１番地（北海道農業研究センター構内）",
+        "status": "カメラでヒグマを確認",
+        "icon": "camera.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.248361,
+          43.037333
+        ]
+      },
+      "properties": {
+        "id": "1586",
+        "datetime": "2026年05月29日 05:50",
+        "year": 2026,
+        "month": 5,
+        "hour": 5,
+        "award": "西区",
+        "location": "西区平和無番地(盤渓橋から南西に約600mの地点)",
+        "status": "カメラでヒグマを確認",
+        "icon": "camera.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.215285,
+          43.108911
+        ]
+      },
+      "properties": {
+        "id": "1587",
+        "datetime": "2026年06月01日 15:30",
+        "year": 2026,
+        "month": 6,
+        "hour": 15,
+        "award": "手稲区",
+        "location": "手稲本町無番地(手稲山麓線上「手稲IC」入口より手稲山方向へ約1km～5kmの間の地点)",
+        "status": "ヒグマらしき動物を目撃",
+        "icon": "like-bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.102484,
+          42.860999
+        ]
+      },
+      "properties": {
+        "id": "1588",
+        "datetime": "2026年06月03日 13:30",
+        "year": 2026,
+        "month": 6,
+        "hour": 13,
+        "award": "南区",
+        "location": "南区定山渓無番地（国道230号線上中山峠から札幌方面へ400mの林道入口付近）",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.393,
+          42.987083
+        ]
+      },
+      "properties": {
+        "id": "1589",
+        "datetime": "2026年06月04日 23:08",
+        "year": 2026,
+        "month": 6,
+        "hour": 23,
+        "award": "豊平区",
+        "location": "豊平区羊ケ丘7番地1付近(森林総合研究所事務所棟から南に約1kmの地点)",
+        "status": "カメラでヒグマを確認",
+        "icon": "camera.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.251165,
+          42.959288
+        ]
+      },
+      "properties": {
+        "id": "1590",
+        "datetime": "2026年06月05日 10:00",
+        "year": 2026,
+        "month": 6,
+        "hour": 10,
+        "award": "南区",
+        "location": "南区簾舞606番地付近(簾舞雪堆積場から北に約250m地点の河川脇)",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
     }
   ]
 }
