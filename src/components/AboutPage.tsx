@@ -52,6 +52,10 @@ const AboutPage = ({ onNavigateHome }: AboutPageProps): JSX.Element => {
           </thead>
           <tbody>
             <tr>
+              <td>2026/08/02</td>
+              <td>札幌市のヒグマ出没情報のサイトから、2026年7月30日 05:30までの出没データを追加。</td>
+            </tr>
+            <tr>
               <td>2026/06/07</td>
               <td>札幌市のヒグマ出没情報のサイトから、2026年6月5日 10:00までの出没データを追加。</td>
             </tr>
