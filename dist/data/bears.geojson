@@ -33390,6 +33390,1014 @@
         "status": "ヒグマを目撃",
         "icon": "bear.svg"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.291527,
+          43.053848
+        ]
+      },
+      "properties": {
+        "id": "1591",
+        "datetime": "2026年03月26日 18:10",
+        "year": 2026,
+        "month": 3,
+        "hour": 18,
+        "award": "中央区",
+        "location": "中央区宮の森4条12丁目11番付近(大倉山ジャンプ競技場駐車場付近)",
+        "status": "ヒグマらしき動物を目撃",
+        "icon": "like-bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.29,
+          43.06
+        ]
+      },
+      "properties": {
+        "id": "1592",
+        "datetime": "2026年04月14日 05:45",
+        "year": 2026,
+        "month": 4,
+        "hour": 5,
+        "award": "中央区",
+        "location": "中央区宮の森1274番地付近(自然歩道三角山盤渓ルｰト(宮の森入口)から南西に約200mの林内)中央区宮の森1274番地付近(自然歩道三角山盤渓ルｰト(宮の森入口)から南西に約200mの林内)",
+        "status": "ヒグマらしき動物を目撃",
+        "icon": "like-bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.34,
+          43.02
+        ]
+      },
+      "properties": {
+        "id": "1593",
+        "datetime": "2026年04月18日 00:00",
+        "year": 2026,
+        "month": 4,
+        "hour": 0,
+        "award": "南区",
+        "location": "南区自然歩道｢藻岩山ルｰト｣(市民スキｰ場入口から北に約400mの地点)",
+        "status": "ヒグマらしき動物を目撃",
+        "icon": "like-bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.29,
+          43.04
+        ]
+      },
+      "properties": {
+        "id": "1594",
+        "datetime": "2026年04月19日 00:40",
+        "year": 2026,
+        "month": 4,
+        "hour": 0,
+        "award": "中央区",
+        "location": "中央区宮の森2条17丁目11番付近の山林内",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.36432,
+          42.95797
+        ]
+      },
+      "properties": {
+        "id": "1595",
+        "datetime": "2026年04月24日 08:00",
+        "year": 2026,
+        "month": 4,
+        "hour": 8,
+        "award": "南区",
+        "location": "南区真駒内160番地2付近(札幌市駒岡清掃工場から東に約700mの澄川厚別滝連絡線上)",
+        "status": "ヒグマらしき動物を目撃",
+        "icon": "like-bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.41006,
+          42.99487
+        ]
+      },
+      "properties": {
+        "id": "1596",
+        "datetime": "2026年05月03日 18:18",
+        "year": 2026,
+        "month": 5,
+        "hour": 18,
+        "award": "豊平区",
+        "location": "豊平区羊ケ丘1番地付近(北海道農業研究センタｰ構内)",
+        "status": "カメラでヒグマを確認",
+        "icon": "camera.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.26615,
+          43.08327
+        ]
+      },
+      "properties": {
+        "id": "1597",
+        "datetime": "2026年05月07日 17:34",
+        "year": 2026,
+        "month": 5,
+        "hour": 17,
+        "award": "西区",
+        "location": "西区西野290番地付近(宮丘公園の芝生広場内)",
+        "status": "ヒグマらしき動物を目撃",
+        "icon": "like-bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.3864,
+          42.9876
+        ]
+      },
+      "properties": {
+        "id": "1598",
+        "datetime": "2026年05月07日 19:48",
+        "year": 2026,
+        "month": 5,
+        "hour": 19,
+        "award": "豊平区",
+        "location": "豊平区羊ケ丘7番地1付近(焼山頂上から北西方向へ約1.2kmの林道上)",
+        "status": "カメラでヒグマを確認",
+        "icon": "camera.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.29162,
+          43.03013
+        ]
+      },
+      "properties": {
+        "id": "1599",
+        "datetime": "2026年05月08日 16:42",
+        "year": 2026,
+        "month": 5,
+        "hour": 16,
+        "award": "中央区",
+        "location": "中央区盤渓476番地付近(盤渓会館から北東に約280mの道路上)",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.38799,
+          42.98833
+        ]
+      },
+      "properties": {
+        "id": "1600",
+        "datetime": "2026年05月13日 21:27",
+        "year": 2026,
+        "month": 5,
+        "hour": 21,
+        "award": "豊平区",
+        "location": "豊平区羊ケ丘7番地1付近(焼山頂上から北西方向へ約1.2kmの林道上)※同日の19時37分頃にも山頂付近のカメラでヒグマ１頭を確認",
+        "status": "カメラでヒグマを確認",
+        "icon": "camera.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.420417,
+          43.005028
+        ]
+      },
+      "properties": {
+        "id": "1601",
+        "datetime": "2026年05月14日 20:18",
+        "year": 2026,
+        "month": 5,
+        "hour": 20,
+        "award": "豊平区",
+        "location": "豊平区羊ケ丘１番地(北海道農業研究センター構内)",
+        "status": "カメラでヒグマを確認 ※撮影地点から北に100mの地点で足跡を確認",
+        "icon": "camera.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.304167,
+          43.034972
+        ]
+      },
+      "properties": {
+        "id": "1602",
+        "datetime": "2026年05月16日",
+        "year": 2026,
+        "month": 5,
+        "hour": "",
+        "award": "中央区",
+        "location": "中央区円山西町無番地(円山不動の滝から南に約430mの地点)",
+        "status": "足跡を確認",
+        "icon": "footprint.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.218294,
+          42.967774
+        ]
+      },
+      "properties": {
+        "id": "1603",
+        "datetime": "2026年05月17日 23:00",
+        "year": 2026,
+        "month": 5,
+        "hour": 23,
+        "award": "南区",
+        "location": "南区小金湯27番地付近(札幌市アイヌ文化交流センターから南西に約100m地点)",
+        "status": "ヒグマらしき動物を目撃",
+        "icon": "like-bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.38383,
+          42.99107
+        ]
+      },
+      "properties": {
+        "id": "1604",
+        "datetime": "2026年05月22日 02:49",
+        "year": 2026,
+        "month": 5,
+        "hour": 2,
+        "award": "豊平区",
+        "location": "豊平区羊ケ丘7番地1付近(森林総合研究所事務所棟から南西に約900mの地点)※同日の3時33分頃にも付近のカメラでヒグマ１頭を確認",
+        "status": "カメラでヒグマを確認",
+        "icon": "camera.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.129374,
+          43.030731
+        ]
+      },
+      "properties": {
+        "id": "1605",
+        "datetime": "2026年05月22日 16:15",
+        "year": 2026,
+        "month": 5,
+        "hour": 16,
+        "award": "南区",
+        "location": "南区定山渓無番地(定山渓ダム流木処理場付近)",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.4204,
+          43.0051
+        ]
+      },
+      "properties": {
+        "id": "1606",
+        "datetime": "2026年05月25日 21:06",
+        "year": 2026,
+        "month": 5,
+        "hour": 21,
+        "award": "豊平区",
+        "location": "豊平区羊ケ丘１番地（北海道農業研究センター構内）",
+        "status": "カメラでヒグマを確認",
+        "icon": "camera.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.248361,
+          43.037333
+        ]
+      },
+      "properties": {
+        "id": "1607",
+        "datetime": "2026年05月29日 05:50",
+        "year": 2026,
+        "month": 5,
+        "hour": 5,
+        "award": "西区",
+        "location": "西区平和無番地(盤渓橋から南西に約600mの地点)",
+        "status": "カメラでヒグマを確認",
+        "icon": "camera.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.215285,
+          43.108911
+        ]
+      },
+      "properties": {
+        "id": "1608",
+        "datetime": "2026年06月01日 15:30",
+        "year": 2026,
+        "month": 6,
+        "hour": 15,
+        "award": "手稲区",
+        "location": "手稲本町無番地(手稲山麓線上「手稲IC」入口より手稲山方向へ約1km～5kmの間の地点)",
+        "status": "ヒグマらしき動物を目撃",
+        "icon": "like-bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.102484,
+          42.860999
+        ]
+      },
+      "properties": {
+        "id": "1609",
+        "datetime": "2026年06月03日 13:30",
+        "year": 2026,
+        "month": 6,
+        "hour": 13,
+        "award": "南区",
+        "location": "南区定山渓無番地（国道230号線上中山峠から札幌方面へ400mの林道入口付近）",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.393,
+          42.987083
+        ]
+      },
+      "properties": {
+        "id": "1610",
+        "datetime": "2026年06月04日 23:08",
+        "year": 2026,
+        "month": 6,
+        "hour": 23,
+        "award": "豊平区",
+        "location": "豊平区羊ケ丘7番地1付近(森林総合研究所事務所棟から南に約1kmの地点)",
+        "status": "カメラでヒグマを確認",
+        "icon": "camera.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.251165,
+          42.959288
+        ]
+      },
+      "properties": {
+        "id": "1611",
+        "datetime": "2026年06月05日 10:00",
+        "year": 2026,
+        "month": 6,
+        "hour": 10,
+        "award": "南区",
+        "location": "南区簾舞606番地付近(簾舞雪堆積場から北に約250m地点の河川脇)",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.297722,
+          43.043917
+        ]
+      },
+      "properties": {
+        "id": "1612",
+        "datetime": "2026年06月07日 18:32",
+        "year": 2026,
+        "month": 6,
+        "hour": 18,
+        "award": "中央区",
+        "location": "中央区円山西町2丁目22番地付近",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.296852,
+          43.044131
+        ]
+      },
+      "properties": {
+        "id": "1613",
+        "datetime": "2026年06月09日 18:50",
+        "year": 2026,
+        "month": 6,
+        "hour": 18,
+        "award": "中央区",
+        "location": "中央区宮の森1条16丁目1番付近",
+        "status": "ヒグマを目撃（3頭）",
+        "icon": "bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.283013,
+          43.030015
+        ]
+      },
+      "properties": {
+        "id": "1614",
+        "datetime": "2026年06月10日 16:05",
+        "year": 2026,
+        "month": 6,
+        "hour": 16,
+        "award": "中央区",
+        "location": "中央区盤渓417番地付近(盤渓会館から北西に約550ｍの地点)",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.420409,
+          43.005025
+        ]
+      },
+      "properties": {
+        "id": "1615",
+        "datetime": "2026年06月13日 03:15",
+        "year": 2026,
+        "month": 6,
+        "hour": 3,
+        "award": "豊平区",
+        "location": "豊平区羊ケ丘1番地付近",
+        "status": "カメラでヒグマを確認",
+        "icon": "camera.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.164533,
+          42.991191
+        ]
+      },
+      "properties": {
+        "id": "1616",
+        "datetime": "2026年06月14日 11:00",
+        "year": 2026,
+        "month": 6,
+        "hour": 11,
+        "award": "南区",
+        "location": "南区定山渓無番地（木挽沢林道入り口から300ｍ）",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.110186,
+          42.865608
+        ]
+      },
+      "properties": {
+        "id": "1617",
+        "datetime": "2026年06月14日 18:25",
+        "year": 2026,
+        "month": 6,
+        "hour": 18,
+        "award": "南区",
+        "location": "南区定山渓無番地（道の駅 望羊中山から札幌方面へ1.5㎞）",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.152485,
+          42.929703
+        ]
+      },
+      "properties": {
+        "id": "1618",
+        "datetime": "2026年06月16日 19:25",
+        "year": 2026,
+        "month": 6,
+        "hour": 19,
+        "award": "南区",
+        "location": "南区定山渓無番地（定山渓自然の村入口から南に約250mの地点）",
+        "status": "ヒグマらしき動物を目撃",
+        "icon": "like-bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.125474,
+          42.984181
+        ]
+      },
+      "properties": {
+        "id": "1619",
+        "datetime": "2026年06月18日",
+        "year": 2026,
+        "month": 6,
+        "hour": "",
+        "award": "南区",
+        "location": "定山渓無番地（おしどり水処理場から南東に約300mの道道95号線上）",
+        "status": "フンを確認",
+        "icon": "excrement.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.305635,
+          43.007
+        ]
+      },
+      "properties": {
+        "id": "1620",
+        "datetime": "2026年06月20日 01:00",
+        "year": 2026,
+        "month": 6,
+        "hour": 1,
+        "award": "南区",
+        "location": "南区北ノ沢1804番地6(右北の沢二号橋から東に約100mの地点)",
+        "status": "ヒグマらしき動物を目撃",
+        "icon": "like-bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.105186,
+          43.086911
+        ]
+      },
+      "properties": {
+        "id": "1621",
+        "datetime": "2026年06月20日 11:15",
+        "year": 2026,
+        "month": 6,
+        "hour": 11,
+        "award": "南区",
+        "location": "南区定山渓無番地(春香山小屋から北に約1.7kmの小樽内川奥林道上)",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.281141,
+          43.029801
+        ]
+      },
+      "properties": {
+        "id": "1622",
+        "datetime": "2026年06月23日 10:55",
+        "year": 2026,
+        "month": 6,
+        "hour": 10,
+        "award": "中央区",
+        "location": "中央区盤渓416番地付近",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.146722,
+          42.93225
+        ]
+      },
+      "properties": {
+        "id": "1623",
+        "datetime": "2026年06月25日 10:40",
+        "year": 2026,
+        "month": 6,
+        "hour": 10,
+        "award": "南区",
+        "location": "南区定山渓無番地（豊平峡ダムから北に約2kmの地点）",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.14737,
+          42.93547
+        ]
+      },
+      "properties": {
+        "id": "1624",
+        "datetime": "2026年06月26日 08:00",
+        "year": 2026,
+        "month": 6,
+        "hour": 8,
+        "award": "南区",
+        "location": "南区定山渓820番地付近※同日9時20分にも目撃あり",
+        "status": "ヒグマを目撃（親子）",
+        "icon": "bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.205644,
+          42.968803
+        ]
+      },
+      "properties": {
+        "id": "1625",
+        "datetime": "2026年06月27日 22:07",
+        "year": 2026,
+        "month": 6,
+        "hour": 22,
+        "award": "南区",
+        "location": "南区小金湯無番地（百松橋から東に約200mの国道230号線上）",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.447323,
+          42.951171
+        ]
+      },
+      "properties": {
+        "id": "1626",
+        "datetime": "2026年06月30日 02:57",
+        "year": 2026,
+        "month": 6,
+        "hour": 2,
+        "award": "清田区",
+        "location": "清田区有明147番地付近",
+        "status": "カメラでヒグマを確認",
+        "icon": "camera.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.191418,
+          42.969921
+        ]
+      },
+      "properties": {
+        "id": "1627",
+        "datetime": "2026年06月30日 23:40",
+        "year": 2026,
+        "month": 6,
+        "hour": 23,
+        "award": "南区",
+        "location": "南区定山渓11番地付近",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.412611,
+          42.930583
+        ]
+      },
+      "properties": {
+        "id": "1628",
+        "datetime": "2026年07月01日 17:55",
+        "year": 2026,
+        "month": 7,
+        "hour": 17,
+        "award": "清田区",
+        "location": "清田区有明494番地3付近",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.392806,
+          42.987397
+        ]
+      },
+      "properties": {
+        "id": "1629",
+        "datetime": "2026年07月02日 06:12",
+        "year": 2026,
+        "month": 7,
+        "hour": 6,
+        "award": "豊平区",
+        "location": "豊平区羊ケ丘7番地1付近",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.19135,
+          42.969678
+        ]
+      },
+      "properties": {
+        "id": "1630",
+        "datetime": "2026年07月06日 19:27",
+        "year": 2026,
+        "month": 7,
+        "hour": 19,
+        "award": "南区",
+        "location": "南区定山渓11番地付近",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.31189,
+          42.992855
+        ]
+      },
+      "properties": {
+        "id": "1631",
+        "datetime": "2026年07月08日 18:22",
+        "year": 2026,
+        "month": 7,
+        "hour": 18,
+        "award": "南区",
+        "location": "南区南沢1812番地付近",
+        "status": "カメラでヒグマを確認",
+        "icon": "camera.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.199667,
+          43.121534
+        ]
+      },
+      "properties": {
+        "id": "1632",
+        "datetime": "2026年07月08日 22:00",
+        "year": 2026,
+        "month": 7,
+        "hour": 22,
+        "award": "手稲区",
+        "location": "手稲区手稲金山131番地4付近",
+        "status": "ヒグマらしき動物の物音を確認",
+        "icon": "voice.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.420409,
+          43.005025
+        ]
+      },
+      "properties": {
+        "id": "1633",
+        "datetime": "2026年07月13日 21:20",
+        "year": 2026,
+        "month": 7,
+        "hour": 21,
+        "award": "豊平区",
+        "location": "豊平区羊ケ丘1番地付近",
+        "status": "カメラでヒグマを確認",
+        "icon": "camera.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.285454,
+          43.058066
+        ]
+      },
+      "properties": {
+        "id": "1634",
+        "datetime": "2026年07月19日 16:40",
+        "year": 2026,
+        "month": 7,
+        "hour": 16,
+        "award": "西区",
+        "location": "西区自然歩道「三角山～盤渓ルート」（哲学の道と山頂の分岐点付近）",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.283437,
+          43.035185
+        ]
+      },
+      "properties": {
+        "id": "1635",
+        "datetime": "2026年07月25日 19:25",
+        "year": 2026,
+        "month": 7,
+        "hour": 19,
+        "award": "中央区",
+        "location": "中央区盤渓201番地付近",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.274028,
+          42.990333
+        ]
+      },
+      "properties": {
+        "id": "1636",
+        "datetime": "2026年07月27日",
+        "year": 2026,
+        "month": 7,
+        "hour": "",
+        "award": "南区",
+        "location": "南区白川市民の森（案内板22番から23番に向かって約50mの地点）",
+        "status": "足跡を確認",
+        "icon": "footprint.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.151096,
+          42.972039
+        ]
+      },
+      "properties": {
+        "id": "1637",
+        "datetime": "2026年07月27日 23:40",
+        "year": 2026,
+        "month": 7,
+        "hour": 23,
+        "award": "南区",
+        "location": "南区定山渓870番地付近",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.272309,
+          43.05755
+        ]
+      },
+      "properties": {
+        "id": "1638",
+        "datetime": "2026年07月30日 05:30",
+        "year": 2026,
+        "month": 7,
+        "hour": 5,
+        "award": "西区",
+        "location": "西区福井3丁目4番付近※同日6時15分頃、福井3丁目8番付近で目撃あり",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
     }
   ]
 }
