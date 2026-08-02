@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, type MouseEvent } from 'react';
 import type { BearFeature } from '../types/bears';
 
 /**
@@ -35,8 +35,15 @@ const DetailsModal = ({ feature, onClose }: { feature: BearFeature | null; onClo
 
   const iconUrl = import.meta.env.VITE_ROOT_DIR + 'icon/' + String(feature.properties.icon);
 
+  const handleBackdropClick = (event: MouseEvent<HTMLDivElement>) => {
+    // 背景（モーダル外）をクリックしたら閉じる
+    if (event.target === event.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <div className="modal-backdrop" role="dialog" aria-modal="true">
+    <div className="modal-backdrop" role="dialog" aria-modal="true" onClick={handleBackdropClick}>
       <div className="modal-content details-modal">
         <header className="modal-header">
           <h2>出没情報</h2>
