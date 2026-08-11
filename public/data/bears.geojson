@@ -34398,6 +34398,69 @@
         "status": "ヒグマを目撃",
         "icon": "bear.svg"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.110403,
+          43.063948
+        ]
+      },
+      "properties": {
+        "id": "1639",
+        "datetime": "2026年08月07日 17:00",
+        "year": 2026,
+        "month": 8,
+        "hour": 17,
+        "award": "南区",
+        "location": "南区定山渓無番地（春香山小屋から南に約900mの道道1号線上）",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.461606,
+          42.990544
+        ]
+      },
+      "properties": {
+        "id": "1640",
+        "datetime": "2026年08月08日 19:50",
+        "year": 2026,
+        "month": 8,
+        "hour": 19,
+        "award": "清田区",
+        "location": "清田区里塚2条2丁目8番付近",
+        "status": "ヒグマらしき動物を目撃",
+        "icon": "like-bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.238944,
+          42.937306
+        ]
+      },
+      "properties": {
+        "id": "1641",
+        "datetime": "2026年08月10日",
+        "year": 2026,
+        "month": 8,
+        "hour": "",
+        "award": "南区",
+        "location": "南区豊滝市民の森（案内板13番から5番に向かって約400mの地点）",
+        "status": "足跡を確認",
+        "icon": "footprint.svg"
+      }
     }
   ]
 }
