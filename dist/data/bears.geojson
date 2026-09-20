@@ -34461,6 +34461,153 @@
         "status": "足跡を確認",
         "icon": "footprint.svg"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.250107,
+          42.959946
+        ]
+      },
+      "properties": {
+        "id": "1642",
+        "datetime": "2026年08月18日",
+        "year": 2026,
+        "month": 8,
+        "hour": "",
+        "award": "南区",
+        "location": "南区砥山無番地（八剣山トンネル東側出入口から南東に約300mの豊平川付近）",
+        "status": "足跡を確認",
+        "icon": "footprint.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.449213,
+          42.944759
+        ]
+      },
+      "properties": {
+        "id": "1643",
+        "datetime": "2026年08月30日 08:00",
+        "year": 2026,
+        "month": 8,
+        "hour": 8,
+        "award": "清田区",
+        "location": "清田区有明177番地付近",
+        "status": "ヒグマらしき動物の痕跡を確認",
+        "icon": "other.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.126067,
+          42.939898
+        ]
+      },
+      "properties": {
+        "id": "1644",
+        "datetime": "2026年09月03日 08:05",
+        "year": 2026,
+        "month": 9,
+        "hour": 8,
+        "award": "南区",
+        "location": "南区定山渓無番地(国道230号線「薄別」バス停から中山峠方向に約100mの道路上)",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.287486,
+          42.979879
+        ]
+      },
+      "properties": {
+        "id": "1645",
+        "datetime": "2026年09月03日",
+        "year": 2026,
+        "month": 9,
+        "hour": "",
+        "award": "南区",
+        "location": "南区白川市民の森(案内板26番と6番の中間地点)",
+        "status": "フンを確認",
+        "icon": "excrement.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.263526,
+          43.048089
+        ]
+      },
+      "properties": {
+        "id": "1646",
+        "datetime": "2026年09月08日 22:00",
+        "year": 2026,
+        "month": 9,
+        "hour": 22,
+        "award": "西区",
+        "location": "西区福井9丁目付近",
+        "status": "ヒグマらしき動物による物音を確認",
+        "icon": "voice.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.105742,
+          43.073469
+        ]
+      },
+      "properties": {
+        "id": "1647",
+        "datetime": "2026年09月09日 15:55",
+        "year": 2026,
+        "month": 9,
+        "hour": 15,
+        "award": "南区",
+        "location": "定山渓無番地（春香山小屋から西に約400mの道道1号線上）",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.11385,
+          42.870575
+        ]
+      },
+      "properties": {
+        "id": "1648",
+        "datetime": "2026年09月13日 15:50",
+        "year": 2026,
+        "month": 9,
+        "hour": 15,
+        "award": "南区",
+        "location": "南区定山渓無番地（国道230号線上中山峠から札幌方面へ約2kmの地点）",
+        "status": "ヒグマを目撃",
+        "icon": "bear.svg"
+      }
     }
   ]
 }
